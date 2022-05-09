@@ -3,8 +3,9 @@ title: "Social jetlag computation"
 output: rmarkdown::html_vignette
 description: >
   This article shows some notes about different approaches that can be used to
-  compute the social jetlag for the Munich Chronotype Questionnaire (MCTQ). It
-  also explains how the `method` argument from the `sjl()` function  works.
+  compute the social jetlag for the Munich ChronoType Questionnaire (MCTQ). It 
+  also explains how the 'method' argument from the 'sjl_rel()', 'sjl()', 
+  'sjl_sc_rel()', and 'sjl_sc()' functions works.
 vignette: >
   %\VignetteIndexEntry{Social jetlag computation}
   %\VignetteEngine{knitr::rmarkdown}
@@ -18,7 +19,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-This article shows some notes about different approaches that can be used to compute the social jetlag ($SJL$) for the Munich Chronotype Questionnaire (MCTQ). It also explains how the `method` argument from the `sjl()` function works.
+This article shows some notes about different approaches that can be used to compute the social jetlag ($SJL$) for the Munich ChronoType Questionnaire (MCTQ). It also explains how the `method` argument from the `sjl_rel()`, `sjl()`, `sjl_sc_rel()`, and `sjl_sc()` functions works.
 
 It's a good idea to have the standard MCTQ questionnaire and the guidelines for the standard MCTQ variable computation open while reading this article/vignette. That way you can have a better understanding of the data objects we are going to deal with. You can download a copy of the MCTQ full standard version  [here](https://www.thewep.org/documentations/mctq/item/english-mctq-full). Click [here](https://www.thewep.org/documentations/mctq/item/mctq-variables) to download a copy of the guidelines for the standard MCTQ variables.
 
@@ -81,7 +82,9 @@ We call this the __two intervals problem__. It represents an unsolvable mathemat
 
 ## Methods for computing $SJL$
 
-The `sjl()` function provides an argument called `method` that allows you to choose three different methods to deal with the two intervals problem. Here's how they work.
+the `sjl_rel()`, `sjl()`, `sjl_sc_rel()`, and `sjl_sc()` functions provides an argument called `method` that allows you to choose three different methods to deal with the two intervals problem. Here's how they work.
+
+The `sjl()` function will be used in the examples, but the same logic apply to the other `sjl` functions.
 
 ### `method = "difference"`
 
@@ -189,6 +192,6 @@ By using `method = "longer"`, `sjl()` uses the longer interval between $MSW$ and
 
 We recommend that you always use the `"shorter"` method when computing $SJL_{rel}$ or $SJL$ (the default `sjl()` method).
 
-In our tests, the `"shorter"` method demonstrated to be almost fail-safe. You really need to worry about the $SJL$ computation if you are dealing with shift workers.
+In our tests, the `"shorter"` method demonstrated to be almost fail-safe. You just need to worry about the $SJL$ computation if you are dealing with shift workers.
 
-When dealing with a large MCTQ$^{Shift}$ dataset, it will be very difficult to identify $SJL$ errors, unless you look case by case and check the results with your respondents. That's usually not a viable option. We recommend that you mention which method you use to compute $SJL$ and add it as a possible limitation of your results.
+When dealing with a large MCTQ$^{Shift}$ dataset, it will be very difficult to identify $SJL$ errors, unless you look case by case and check the results with your respondents. This is usually not a viable option. We recommend that you mention which method you use to compute $SJL$ and add it as a possible limitation of your results.

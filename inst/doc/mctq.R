@@ -5,10 +5,7 @@ knitr::opts_chunk$set(
 )
 
 ## ---- eval = FALSE------------------------------------------------------------
-#  install.packages("remotes")
-
-## ---- eval = FALSE------------------------------------------------------------
-#  remotes::install_github("ropensci/mctq")
+#  install.packages("mctq", dependencies = TRUE)
 
 ## ---- warning = FALSE, message = FALSE----------------------------------------
 library(mctq)
@@ -28,7 +25,7 @@ library(hms)
 library(lubridate)
 
 data <- data %>% dplyr::mutate(
-  dplyr::across(dplyr::matches("^id$|^wd$"), as.integer),
+  dplyr::across(c("id", "wd"), as.integer),
   dplyr::across(dplyr::matches("^work$|^alarm_|^wake_|^reasons_f$"),
                 as.logical),
   dplyr::across(dplyr::matches("^bt_|^sprep_|^se_"), hms::parse_hm),

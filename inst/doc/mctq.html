@@ -14,7 +14,19 @@
 
 <title>Introduction to mctq</title>
 
-<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -24,6 +36,7 @@
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
     </style>
+
 
 
 <style type="text/css">
@@ -125,7 +138,187 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
 
 
 
@@ -141,381 +334,538 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<p>This article takes a quick tour of the Munich Chronotype Questionnaire (MCTQ) main functions from the <code>mctq</code> package. Please see the function documentation and other articles/vignettes for more details.</p>
-<p>The same features presented here can also be used with <span class="math inline">\(\mu\)</span>MCTQ. To make it easy for newcomers, some MCTQ<span class="math inline">\(^{Shift}\)</span> functions are not shown.</p>
-<p>We assume that you already have <a href="https://www.r-project.org/">R</a> installed and have some familiarity with R and MCTQ data. We also strongly recommend using <a href="https://www.rstudio.com/">RStudio</a> as your IDE (Integrated Development Environment).</p>
-<p>It’s a good idea to have the standard MCTQ questionnaire open while reading this introduction. That way you can have a better understanding of the data objects we are going to deal with. You can download a copy of the MCTQ full standard version <a href="https://www.thewep.org/documentations/mctq/item/english-mctq-full">here</a>.</p>
+<p>This article takes a quick tour of the Munich ChronoType
+Questionnaire (MCTQ) main functions from the <code>mctq</code> package.
+Please see the function documentation and other articles/vignettes for
+more details.</p>
+<p>The same features presented here can also be used with <span class="math inline">\(\mu\)</span>MCTQ. To make it easy for newcomers,
+some MCTQ<span class="math inline">\(^{Shift}\)</span> functions and
+other special functions are not shown.</p>
+<p>We assume that you already have <a href="https://www.r-project.org/">R</a> installed and have some
+familiarity with R and MCTQ data. We also strongly recommend using <a href="https://www.rstudio.com/">RStudio</a> as your IDE (Integrated
+Development Environment).</p>
+<p>It’s a good idea to have the standard MCTQ questionnaire open while
+reading this introduction. That way you can have a better understanding
+of the data objects we are going to deal with. You can download a copy
+of the MCTQ full standard version <a href="https://www.thewep.org/documentations/mctq/item/english-mctq-full">here</a>.</p>
 <div id="first-things-first" class="section level2">
 <h2>First things first</h2>
-<p>Let’s start with the basics. The first thing you must do to use <code>mctq</code> is to have some MCTQ data and <code>mctq</code> installed and loaded.</p>
-<p>To install a GitHub package you’re going to need the <a href="https://remotes.r-lib.org/">remotes</a> package. If you don’t already have it installed, just type the following command in your console.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span></code></pre></div>
-<p>After <code>remotes</code> is installed, install <code>mctq</code> with:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;ropensci/mctq&quot;</span>)</span></code></pre></div>
-<p>Great! We now must load the package to memory to start using it. Do this with:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mctq)</span></code></pre></div>
-<p>Now we just need to get some MCTQ data. For demonstration purposes, we’re going to use a small and fictional raw standard MCTQ data provided by the <code>mctq</code> package.</p>
-<p>This dataset already has valid values. As for any data analysis, you must have clean and valid data before using any analysis tool. If you don’t know how to do that, we strongly recommend checking Hadley Wickham and Garrett Grolemund free and online book <a href="https://r4ds.had.co.nz/">R for data Science</a> and the Coursera course from John Hopkins University <a href="https://www.coursera.org/specializations/data-science-foundations-r">Data Science: Foundations using R</a> (free for audit students).</p>
-<p>Teaching you how to load your data in R is outside the scope of this article. For that, we recommend checking the <a href="https://readr.tidyverse.org/">readr</a> package from <a href="https://www.tidyverse.org/">tidyverse</a>.</p>
-<p>Our fictional MCTQ data will be loaded with the code below. The naming of the variables follows the same naming pattern used in MCTQ publications. You can see the meaning of each variable by running <code>?std_mctq</code> in your console (you can also see it in this <a href="https://docs.ropensci.org/mctq/reference/std_mctq.html">link</a>).</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(mctq<span class="sc">::</span><span class="fu">raw_data</span>(<span class="st">&quot;vignette_mctq.csv&quot;</span>),</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">col_types =</span> readr<span class="sc">::</span><span class="fu">cols</span>(<span class="at">.default =</span> <span class="st">&quot;c&quot;</span>))</span></code></pre></div>
+<p>Let’s start with the basics. The first thing you must do to use
+<code>mctq</code> is to have some MCTQ data and <code>mctq</code>
+installed and loaded.</p>
+<p>Install <code>mctq</code> with:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;mctq&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Great! We now must load the package to memory to start using it. Do
+this with:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mctq)</span></code></pre></div>
+<p>Now we just need to get some MCTQ data. For demonstration purposes,
+we’re going to use a small and fictional raw standard MCTQ data provided
+by the <code>mctq</code> package.</p>
+<p>This dataset already has valid values. As for any data analysis, you
+must have clean and valid data before using any analysis tool. If you
+don’t know how to do that, we strongly recommend checking Hadley Wickham
+and Garrett Grolemund free and online book <a href="https://r4ds.had.co.nz/">R for data Science</a> and the Coursera
+course from John Hopkins University <a href="https://www.coursera.org/specializations/data-science-foundations-r">Data
+Science: Foundations using R</a> (free for audit students).</p>
+<p>Teaching you how to load your data in R is outside the scope of this
+article. For that, we recommend checking the <a href="https://readr.tidyverse.org/">readr</a> package from <a href="https://www.tidyverse.org/">tidyverse</a>.</p>
+<p>Our fictional MCTQ data will be loaded with the code below. The
+naming of the variables follows the same naming pattern used in MCTQ
+publications. You can see the meaning of each variable by running
+<code>?std_mctq</code> in your console (you can also see it in this <a href="https://docs.ropensci.org/mctq/reference/std_mctq.html">link</a>).</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(mctq<span class="sc">::</span><span class="fu">raw_data</span>(<span class="st">&quot;vignette_mctq.csv&quot;</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">col_types =</span> readr<span class="sc">::</span><span class="fu">cols</span>(<span class="at">.default =</span> <span class="st">&quot;c&quot;</span>))</span></code></pre></div>
 </div>
 <div id="converting-your-data" class="section level2">
 <h2>Converting your data</h2>
-<p><code>mctq</code> makes use of the <a href="https://lubridate.tidyverse.org/">lubridate</a> and <a href="https://hms.tidyverse.org/">hms</a> packages from <a href="https://www.tidyverse.org/">tidyverse</a>, which provide special objects to deal with date/time values in R. If your dataset does not conform to this structure, you first need to convert your data to it.</p>
-<p>Due to the circular nature of time, we strongly recommend that you use appropriate temporal objects while dealing with date/time in R. That can help you get rid of several computation mistakes while trying to adapt your data from a base 10 to a system rooted in a base 12 numerical system.</p>
-<p>Teaching you how to parse/convert your data is outside the scope of this article. Please refer to the <a href="https://lubridate.tidyverse.org/">lubridate</a> and <a href="https://hms.tidyverse.org/">hms</a> package documentation to learn more about them. These two are essential packages to deal with date/time data in R. We also recommend that you read the <a href="https://r4ds.had.co.nz/dates-and-times.html#time-spans">Dates and times</a> chapter from Wickham &amp; Grolemund’s book “R for Data Science”.</p>
-<p>Here we are interested in two types of time objects: <code>Duration</code> objects, to store time spans, such as sleep latency, and <code>hms</code> objects, to store local time values, such as bedtime.</p>
-<p>But first, let’s take a look at the data, shall we? If you’re using <a href="https://www.rstudio.com/">RStudio</a>, you can run the code above and then type <code>View(data)</code> in the console to explore it.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 20</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   id    work  wd    bt_w  sprep_w slat_w se_w  si_w  alarm_w wake_before_w le_w </span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;         &lt;chr&gt;</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 1     TRUE  5     22:50 23:20   30     06:55 25    TRUE    FALSE         01:00</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2     TRUE  2     21:25 21:30   5      05:05 5     TRUE    FALSE         02:00</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 3     TRUE  5     22:30 23:10   50     08:00 15    TRUE    FALSE         02:15</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 4     TRUE  2     00:45 01:10   15     08:55 20    TRUE    FALSE         01:55</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 5     TRUE  7     22:40 22:40   5      08:20 5     TRUE    FALSE         02:00</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 9 more variables: bt_f &lt;chr&gt;, sprep_f &lt;chr&gt;, slat_f &lt;chr&gt;,</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   se_f &lt;chr&gt;, si_f &lt;chr&gt;, alarm_f &lt;chr&gt;, reasons_f &lt;chr&gt;,</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   reasons_why_f &lt;chr&gt;, le_f &lt;chr&gt;</span></span></code></pre></div>
-<p>As you can see, our data came in different formats. For example, the column <code>bt_w</code> (local time of going to bed on workdays) is in <code>hours:minutes</code> format, while <code>slat_w</code> (sleep latency on workdays) is a duration expressed in minutes.</p>
-<p>Our fictional data will be parsed/converted with the code below. Please note that the <code>lubridate</code> and <code>hms</code> packages are equipped with easy tools and great documentation to help you with this task.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(hms)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">across</span>(dplyr<span class="sc">::</span><span class="fu">matches</span>(<span class="st">&quot;^id$|^wd$&quot;</span>), as.integer),</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">across</span>(dplyr<span class="sc">::</span><span class="fu">matches</span>(<span class="st">&quot;^work$|^alarm_|^wake_|^reasons_f$&quot;</span>),</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                as.logical),</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">across</span>(dplyr<span class="sc">::</span><span class="fu">matches</span>(<span class="st">&quot;^bt_|^sprep_|^se_&quot;</span>), hms<span class="sc">::</span>parse_hm),</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">across</span>(dplyr<span class="sc">::</span><span class="fu">matches</span>(<span class="st">&quot;^slat_|^si_&quot;</span>),</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>                <span class="sc">~</span> lubridate<span class="sc">::</span><span class="fu">dminutes</span>(<span class="fu">as.numeric</span>(.x))),</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">across</span>(dplyr<span class="sc">::</span><span class="fu">matches</span>(<span class="st">&quot;^le_&quot;</span>), </span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                <span class="sc">~</span> lubridate<span class="sc">::</span><span class="fu">as.duration</span>(hms<span class="sc">::</span><span class="fu">parse_hm</span>(.x)))</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p><code>mctq</code> makes use of the <a href="https://lubridate.tidyverse.org/">lubridate</a> and <a href="https://hms.tidyverse.org/">hms</a> packages from <a href="https://www.tidyverse.org/">tidyverse</a>, which provide special
+objects to deal with date/time values in R. If your dataset does not
+conform to this structure, you first need to convert your data to
+it.</p>
+<p>Due to the circular nature of time, we strongly recommend that you
+use appropriate temporal objects while dealing with date/time in R. That
+can help you get rid of several computation mistakes while trying to
+adapt your data from a base 10 to a system rooted in a base 12 numerical
+system.</p>
+<p>Teaching you how to parse/convert your data is outside the scope of
+this article. Please refer to the <a href="https://lubridate.tidyverse.org/">lubridate</a> and <a href="https://hms.tidyverse.org/">hms</a> package documentation to learn
+more about them. These two are essential packages to deal with date/time
+data in R. We also recommend that you read the <a href="https://r4ds.had.co.nz/dates-and-times.html">Dates and times</a>
+chapter from Wickham &amp; Grolemund’s book “R for Data Science”.</p>
+<p>Here we are interested in two types of time objects:
+<code>Duration</code> objects, to store time spans, such as sleep
+latency, and <code>hms</code> objects, to store local time values, such
+as bedtime.</p>
+<p>But first, let’s take a look at the data, shall we? If you’re using
+<a href="https://www.rstudio.com/">RStudio</a>, you can run the code
+above and then type <code>View(data)</code> in the console to explore
+it.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 20</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   id    work  wd    bt_w  sprep_w slat_w se_w  si_w  alarm_w wake_before_w le_w </span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;         &lt;chr&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 1     TRUE  5     22:50 23:20   30     06:55 25    TRUE    FALSE         01:00</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2     TRUE  2     21:25 21:30   5      05:05 5     TRUE    FALSE         02:00</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 3     TRUE  5     22:30 23:10   50     08:00 15    TRUE    FALSE         02:15</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 4     TRUE  2     00:45 01:10   15     08:55 20    TRUE    FALSE         01:55</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 5     TRUE  7     22:40 22:40   5      08:20 5     TRUE    FALSE         02:00</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 9 more variables: bt_f &lt;chr&gt;, sprep_f &lt;chr&gt;, slat_f &lt;chr&gt;,</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   se_f &lt;chr&gt;, si_f &lt;chr&gt;, alarm_f &lt;chr&gt;, reasons_f &lt;chr&gt;,</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   reasons_why_f &lt;chr&gt;, le_f &lt;chr&gt;</span></span></code></pre></div>
+<p>As you can see, our data came in different formats. For example, the
+column <code>bt_w</code> (local time of going to bed on workdays) is in
+<code>hours:minutes</code> format, while <code>slat_w</code> (sleep
+latency on workdays) is a duration expressed in minutes.</p>
+<p>Our fictional data will be parsed/converted with the code below.
+Please note that the <a href="https://lubridate.tidyverse.org/">lubridate</a> and <a href="https://hms.tidyverse.org/">hms</a> packages are equipped with
+easy tools and great documentation to help you with this task.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(hms)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">across</span>(<span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;wd&quot;</span>), as.integer),</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">across</span>(dplyr<span class="sc">::</span><span class="fu">matches</span>(<span class="st">&quot;^work$|^alarm_|^wake_|^reasons_f$&quot;</span>),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                as.logical),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">across</span>(dplyr<span class="sc">::</span><span class="fu">matches</span>(<span class="st">&quot;^bt_|^sprep_|^se_&quot;</span>), hms<span class="sc">::</span>parse_hm),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">across</span>(dplyr<span class="sc">::</span><span class="fu">matches</span>(<span class="st">&quot;^slat_|^si_&quot;</span>),</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                <span class="sc">~</span> lubridate<span class="sc">::</span><span class="fu">dminutes</span>(<span class="fu">as.numeric</span>(.x))),</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">across</span>(dplyr<span class="sc">::</span><span class="fu">matches</span>(<span class="st">&quot;^le_&quot;</span>), </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                <span class="sc">~</span> lubridate<span class="sc">::</span><span class="fu">as.duration</span>(hms<span class="sc">::</span><span class="fu">parse_hm</span>(.x)))</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <p>Our data is now all set to start. Let’s take a look at it.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 20</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      id work     wd bt_w   sprep_w slat_w              se_w  si_w               </span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;lgl&gt; &lt;int&gt; &lt;time&gt; &lt;time&gt;  &lt;Duration&gt;          &lt;tim&gt; &lt;Duration&gt;         </span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 TRUE      5 22:50  23:20   1800s (~30 minutes) 06:55 1500s (~25 minutes)</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 TRUE      2 21:25  21:30   300s (~5 minutes)   05:05 300s (~5 minutes)  </span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3 TRUE      5 22:30  23:10   3000s (~50 minutes) 08:00 900s (~15 minutes) </span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     4 TRUE      2 00:45  01:10   900s (~15 minutes)  08:55 1200s (~20 minutes)</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     5 TRUE      7 22:40  22:40   300s (~5 minutes)   08:20 300s (~5 minutes)  </span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 12 more variables: alarm_w &lt;lgl&gt;, wake_before_w &lt;lgl&gt;,</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   le_w &lt;Duration&gt;, bt_f &lt;time&gt;, sprep_f &lt;time&gt;, slat_f &lt;Duration&gt;,</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   se_f &lt;time&gt;, si_f &lt;Duration&gt;, alarm_f &lt;lgl&gt;, reasons_f &lt;lgl&gt;,</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   reasons_why_f &lt;chr&gt;, le_f &lt;Duration&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 20</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      id work     wd bt_w   sprep_w slat_w              se_w  si_w               </span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;lgl&gt; &lt;int&gt; &lt;time&gt; &lt;time&gt;  &lt;Duration&gt;          &lt;tim&gt; &lt;Duration&gt;         </span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 TRUE      5 22:50  23:20   1800s (~30 minutes) 06:55 1500s (~25 minutes)</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 TRUE      2 21:25  21:30   300s (~5 minutes)   05:05 300s (~5 minutes)  </span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3 TRUE      5 22:30  23:10   3000s (~50 minutes) 08:00 900s (~15 minutes) </span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     4 TRUE      2 00:45  01:10   900s (~15 minutes)  08:55 1200s (~20 minutes)</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     5 TRUE      7 22:40  22:40   300s (~5 minutes)   08:20 300s (~5 minutes)  </span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 12 more variables: alarm_w &lt;lgl&gt;, wake_before_w &lt;lgl&gt;,</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   le_w &lt;Duration&gt;, bt_f &lt;time&gt;, sprep_f &lt;time&gt;, slat_f &lt;Duration&gt;,</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   se_f &lt;time&gt;, si_f &lt;Duration&gt;, alarm_f &lt;lgl&gt;, reasons_f &lt;lgl&gt;,</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   reasons_why_f &lt;chr&gt;, le_f &lt;Duration&gt;</span></span></code></pre></div>
 </div>
 <div id="workdays-and-work-free-days-variables" class="section level2">
 <h2>Workdays and work-free days variables</h2>
-<p><code>mctq</code> provides a complete and consistent toolkit to process Munich Chronotype Questionnaire (MCTQ) data. To start this process, we must first compute some MCTQ variables related to each section of the questionnaire.</p>
-<p>We’re going to use direct assigning while computing the MCTQ variables, just because is more straightforward for the examples. But, we recommend assigning variables to your dataset by using the <code>mutate()</code> function, included in the <a href="https://dplyr.tidyverse.org/">dplyr</a> package.</p>
+<p><code>mctq</code> provides a complete and consistent toolkit to
+process Munich ChronoType Questionnaire (MCTQ) data. To start this
+process, we must first compute some MCTQ variables related to each
+section of the questionnaire.</p>
+<p>We’re going to use direct assigning while computing the MCTQ
+variables, just because is more straightforward for the examples. But,
+we recommend assigning variables to your dataset by using the
+<code>mutate()</code> function, included in the <a href="https://dplyr.tidyverse.org/">dplyr</a> package.</p>
 <div id="fd-number-of-work-free-days-per-week" class="section level3">
 <h3><code>fd()</code>: Number of work-free days per week</h3>
-<p><code>fd()</code> is a simple function that allows you to compute the difference between the number of days in a week (7) and the number of workdays per week (<code>wd</code>). It takes only <code>wd</code> as argument.</p>
-<p>The output must be the total of free days a respondent has in a week.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>fd <span class="ot">&lt;-</span> <span class="fu">fd</span>(data<span class="sc">$</span>wd)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(wd, fd)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 2</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      wd    fd</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     5     2</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     5</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     5     2</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     2     5</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     7     0</span></span></code></pre></div>
+<p><code>fd()</code> is a simple function that allows you to compute the
+difference between the number of days in a week (7) and the number of
+workdays per week (<code>wd</code>). It takes only <code>wd</code> as
+argument.</p>
+<p>The output must be the total of free days a respondent has in a
+week.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>fd <span class="ot">&lt;-</span> <span class="fu">fd</span>(data<span class="sc">$</span>wd)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(wd, fd)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 2</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      wd    fd</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     5     2</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     5</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     5     2</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     2     5</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     7     0</span></span></code></pre></div>
 </div>
 <div id="so-local-time-of-sleep-onset" class="section level3">
 <h3><code>so()</code>: Local time of sleep onset</h3>
-<p><code>so()</code> allows you to compute the local time of sleep onset for workdays (<code>so_w</code>) and work-free days (<code>so_f</code>). It takes two arguments: <code>sprep</code> (local time of preparing to sleep) and <code>slat</code> (sleep latency or time to fall asleep after preparing to sleep).</p>
-<p>The output must be the sum of <code>sprep</code> and <code>slat</code> in a circular time frame of 24 hours.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>so_w <span class="ot">&lt;-</span> <span class="fu">so</span>(data<span class="sc">$</span>sprep_w, data<span class="sc">$</span>slat_w)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>so_f <span class="ot">&lt;-</span> <span class="fu">so</span>(data<span class="sc">$</span>sprep_f, data<span class="sc">$</span>slat_f)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(sprep_w, slat_w, so_w, sprep_f, slat_f, so_f)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 6</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   sprep_w slat_w              so_w   sprep_f slat_f              so_f  </span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;time&gt;  &lt;Duration&gt;          &lt;time&gt; &lt;time&gt;  &lt;Duration&gt;          &lt;time&gt;</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 23:20   1800s (~30 minutes) 23:50  00:15   300s (~5 minutes)   00:20 </span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 21:30   300s (~5 minutes)   21:35  23:20   600s (~10 minutes)  23:30 </span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 23:10   3000s (~50 minutes) 00:00  00:15   1500s (~25 minutes) 00:40 </span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 01:10   900s (~15 minutes)  01:25  00:55   1500s (~25 minutes) 01:20 </span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 22:40   300s (~5 minutes)   22:45  00:30   300s (~5 minutes)   00:35</span></span></code></pre></div>
+<p><code>so()</code> allows you to compute the local time of sleep onset
+for workdays (<code>so_w</code>) and work-free days (<code>so_f</code>).
+It takes two arguments: <code>sprep</code> (local time of preparing to
+sleep) and <code>slat</code> (sleep latency or time to fall asleep after
+preparing to sleep).</p>
+<p>The output must be the sum of <code>sprep</code> and
+<code>slat</code> in a circular time frame of 24 hours.</p>
+<p>What is a circular time frame of 24 hours? Run
+<code>?cycle_time</code> in your console or click in this <a href="https://docs.ropensci.org/mctq/reference/cycle_time.html">link</a>
+for a detail explanation.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>so_w <span class="ot">&lt;-</span> <span class="fu">so</span>(data<span class="sc">$</span>sprep_w, data<span class="sc">$</span>slat_w)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>so_f <span class="ot">&lt;-</span> <span class="fu">so</span>(data<span class="sc">$</span>sprep_f, data<span class="sc">$</span>slat_f)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(sprep_w, slat_w, so_w, sprep_f, slat_f, so_f)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 6</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   sprep_w slat_w              so_w   sprep_f slat_f              so_f  </span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;time&gt;  &lt;Duration&gt;          &lt;time&gt; &lt;time&gt;  &lt;Duration&gt;          &lt;time&gt;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 23:20   1800s (~30 minutes) 23:50  00:15   300s (~5 minutes)   00:20 </span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 21:30   300s (~5 minutes)   21:35  23:20   600s (~10 minutes)  23:30 </span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 23:10   3000s (~50 minutes) 00:00  00:15   1500s (~25 minutes) 00:40 </span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 01:10   900s (~15 minutes)  01:25  00:55   1500s (~25 minutes) 01:20 </span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 22:40   300s (~5 minutes)   22:45  00:30   300s (~5 minutes)   00:35</span></span></code></pre></div>
 </div>
 <div id="gu-local-time-of-getting-out-of-bed" class="section level3">
 <h3><code>gu()</code>: Local time of getting out of bed</h3>
-<p><code>gu()</code> allows you to compute the local time of getting out of bed for workdays (<code>gu_w</code>) and work-free days (<code>gu_f</code>). It takes two arguments: <code>se</code> (local time of sleep end) and <code>si</code> (sleep inertia).</p>
-<p>The output must be the sum of <code>se</code> and <code>si</code> in a circular time frame of 24 hours.</p>
-<p>Please note that, despite the name, <code>si</code> represents the time that the respondent takes to get up after sleep end. We decided to maintain the original names and abbreviations proposed by the MCTQ authors.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>gu_w <span class="ot">&lt;-</span> <span class="fu">gu</span>(data<span class="sc">$</span>se_w, data<span class="sc">$</span>si_w)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>gu_f <span class="ot">&lt;-</span> <span class="fu">gu</span>(data<span class="sc">$</span>se_f, data<span class="sc">$</span>si_f)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(se_w, si_w, gu_w, se_f, si_f, gu_f)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 6</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   se_w   si_w                gu_w   se_f   si_f                gu_f  </span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;time&gt; &lt;Duration&gt;          &lt;time&gt; &lt;time&gt; &lt;Duration&gt;          &lt;time&gt;</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 06:55  1500s (~25 minutes) 07:20  10:10  1500s (~25 minutes) 10:35 </span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 05:05  300s (~5 minutes)   05:10  07:20  1200s (~20 minutes) 07:40 </span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 08:00  900s (~15 minutes)  08:15  10:05  900s (~15 minutes)  10:20 </span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 08:55  1200s (~20 minutes) 09:15  07:30  1200s (~20 minutes) 07:50 </span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 08:20  300s (~5 minutes)   08:25  07:55  1500s (~25 minutes) 08:20</span></span></code></pre></div>
+<p><code>gu()</code> allows you to compute the local time of getting out
+of bed for workdays (<code>gu_w</code>) and work-free days
+(<code>gu_f</code>). It takes two arguments: <code>se</code> (local time
+of sleep end) and <code>si</code> (sleep inertia).</p>
+<p>The output must be the sum of <code>se</code> and <code>si</code> in
+a circular time frame of 24 hours.</p>
+<p>Please note that, despite the name, <code>si</code> represents the
+time that the respondent takes to get up after sleep end. We decided to
+maintain the original names and abbreviations proposed by the MCTQ
+authors.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>gu_w <span class="ot">&lt;-</span> <span class="fu">gu</span>(data<span class="sc">$</span>se_w, data<span class="sc">$</span>si_w)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>gu_f <span class="ot">&lt;-</span> <span class="fu">gu</span>(data<span class="sc">$</span>se_f, data<span class="sc">$</span>si_f)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(se_w, si_w, gu_w, se_f, si_f, gu_f)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 6</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   se_w   si_w                gu_w   se_f   si_f                gu_f  </span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;time&gt; &lt;Duration&gt;          &lt;time&gt; &lt;time&gt; &lt;Duration&gt;          &lt;time&gt;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 06:55  1500s (~25 minutes) 07:20  10:10  1500s (~25 minutes) 10:35 </span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 05:05  300s (~5 minutes)   05:10  07:20  1200s (~20 minutes) 07:40 </span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 08:00  900s (~15 minutes)  08:15  10:05  900s (~15 minutes)  10:20 </span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 08:55  1200s (~20 minutes) 09:15  07:30  1200s (~20 minutes) 07:50 </span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 08:20  300s (~5 minutes)   08:25  07:55  1500s (~25 minutes) 08:20</span></span></code></pre></div>
 </div>
 <div id="sdu-sleep-duration" class="section level3">
 <h3><code>sdu()</code>: Sleep duration</h3>
-<p><code>sdu()</code> allows you to compute the sleep duration for workdays (<code>sd_w</code>) and work-free days (<code>sd_f</code>). It takes two arguments: <code>so</code> (local time of sleep onset) and <code>se</code> (local time of sleep end).</p>
-<p>The output must be the difference between <code>se</code> and <code>so</code> in a circular time frame of 24 hours.</p>
-<p>Please note that, although we tried to preserve the original authors’ naming pattern for the MCTQ functions, the name <code>sd</code> provokes a dangerous name collision with the widely used <a href="https://rdrr.io/r/stats/sd.html">stats::sd</a> (standard deviation) function. That’s why we named it as <code>sdu</code>. <code>sdu()</code> and <code>msl()</code> are the only exceptions, all the other <code>mctq</code> functions maintain a strong naming resemblance with the original authors’ naming pattern.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>sd_w <span class="ot">&lt;-</span> <span class="fu">sdu</span>(data<span class="sc">$</span>so_w, data<span class="sc">$</span>se_w)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>sd_f <span class="ot">&lt;-</span> <span class="fu">sdu</span>(data<span class="sc">$</span>so_f, data<span class="sc">$</span>se_f)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(so_w, se_w, sd_w, so_f, se_f, sd_f)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 6</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   so_w   se_w   sd_w                 so_f   se_f   sd_f                </span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;time&gt; &lt;time&gt; &lt;Duration&gt;           &lt;time&gt; &lt;time&gt; &lt;Duration&gt;          </span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 23:50  06:55  25500s (~7.08 hours) 00:20  10:10  35400s (~9.83 hours)</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 21:35  05:05  27000s (~7.5 hours)  23:30  07:20  28200s (~7.83 hours)</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 00:00  08:00  28800s (~8 hours)    00:40  10:05  33900s (~9.42 hours)</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 01:25  08:55  27000s (~7.5 hours)  01:20  07:30  22200s (~6.17 hours)</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 22:45  08:20  34500s (~9.58 hours) 00:35  07:55  26400s (~7.33 hours)</span></span></code></pre></div>
+<p><code>sdu()</code> allows you to compute the sleep duration for
+workdays (<code>sd_w</code>) and work-free days (<code>sd_f</code>). It
+takes two arguments: <code>so</code> (local time of sleep onset) and
+<code>se</code> (local time of sleep end).</p>
+<p>The output must be the difference between <code>se</code> and
+<code>so</code> in a circular time frame of 24 hours.</p>
+<p>Please note that, although we tried to preserve the original authors’
+naming pattern for the MCTQ functions, the name <code>sd</code> provokes
+a dangerous name collision with the widely used <a href="https://rdrr.io/r/stats/sd.html">stats::sd</a> (standard
+deviation) function. That’s why we named it as <code>sdu</code>.
+<code>sdu()</code> and <code>msl()</code> are the only exceptions, all
+the other <code>mctq</code> functions maintain a strong naming
+resemblance with the original authors’ naming pattern.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>sd_w <span class="ot">&lt;-</span> <span class="fu">sdu</span>(data<span class="sc">$</span>so_w, data<span class="sc">$</span>se_w)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>sd_f <span class="ot">&lt;-</span> <span class="fu">sdu</span>(data<span class="sc">$</span>so_f, data<span class="sc">$</span>se_f)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(so_w, se_w, sd_w, so_f, se_f, sd_f)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 6</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   so_w   se_w   sd_w                 so_f   se_f   sd_f                </span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;time&gt; &lt;time&gt; &lt;Duration&gt;           &lt;time&gt; &lt;time&gt; &lt;Duration&gt;          </span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 23:50  06:55  25500s (~7.08 hours) 00:20  10:10  35400s (~9.83 hours)</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 21:35  05:05  27000s (~7.5 hours)  23:30  07:20  28200s (~7.83 hours)</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 00:00  08:00  28800s (~8 hours)    00:40  10:05  33900s (~9.42 hours)</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 01:25  08:55  27000s (~7.5 hours)  01:20  07:30  22200s (~6.17 hours)</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 22:45  08:20  34500s (~9.58 hours) 00:35  07:55  26400s (~7.33 hours)</span></span></code></pre></div>
 </div>
 <div id="tbt-total-time-in-bed" class="section level3">
 <h3><code>tbt()</code>: Total time in bed</h3>
-<p><code>tbt()</code> allows you to compute total time in bed for workdays (<code>tbt_w</code>) and work-free days (<code>tbt_f</code>). It takes two arguments: <code>bt</code> (local time of going to bed) and <code>gu</code> (local time of getting out of bed).</p>
-<p>The output must be the difference between <code>gu</code> and <code>bt</code> in a circular time frame of 24 hours.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>tbt_w <span class="ot">&lt;-</span> <span class="fu">tbt</span>(data<span class="sc">$</span>bt_w, data<span class="sc">$</span>gu_w)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>tbt_f <span class="ot">&lt;-</span> <span class="fu">tbt</span>(data<span class="sc">$</span>bt_f, data<span class="sc">$</span>gu_f)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(bt_w, gu_w, tbt_w, bt_f, gu_f, tbt_f)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 6</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   bt_w   gu_w   tbt_w                bt_f   gu_f   tbt_f                </span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;time&gt; &lt;time&gt; &lt;Duration&gt;           &lt;time&gt; &lt;time&gt; &lt;Duration&gt;           </span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 22:50  07:20  30600s (~8.5 hours)  23:35  10:35  39600s (~11 hours)   </span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 21:25  05:10  27900s (~7.75 hours) 21:55  07:40  35100s (~9.75 hours) </span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 22:30  08:15  35100s (~9.75 hours) 22:40  10:20  42000s (~11.67 hours)</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 00:45  09:15  30600s (~8.5 hours)  23:15  07:50  30900s (~8.58 hours) </span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 22:40  08:25  35100s (~9.75 hours) 00:30  08:20  28200s (~7.83 hours)</span></span></code></pre></div>
+<p><code>tbt()</code> allows you to compute total time in bed for
+workdays (<code>tbt_w</code>) and work-free days (<code>tbt_f</code>).
+It takes two arguments: <code>bt</code> (local time of going to bed) and
+<code>gu</code> (local time of getting out of bed).</p>
+<p>The output must be the difference between <code>gu</code> and
+<code>bt</code> in a circular time frame of 24 hours.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>tbt_w <span class="ot">&lt;-</span> <span class="fu">tbt</span>(data<span class="sc">$</span>bt_w, data<span class="sc">$</span>gu_w)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>tbt_f <span class="ot">&lt;-</span> <span class="fu">tbt</span>(data<span class="sc">$</span>bt_f, data<span class="sc">$</span>gu_f)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(bt_w, gu_w, tbt_w, bt_f, gu_f, tbt_f)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 6</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   bt_w   gu_w   tbt_w                bt_f   gu_f   tbt_f                </span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;time&gt; &lt;time&gt; &lt;Duration&gt;           &lt;time&gt; &lt;time&gt; &lt;Duration&gt;           </span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 22:50  07:20  30600s (~8.5 hours)  23:35  10:35  39600s (~11 hours)   </span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 21:25  05:10  27900s (~7.75 hours) 21:55  07:40  35100s (~9.75 hours) </span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 22:30  08:15  35100s (~9.75 hours) 22:40  10:20  42000s (~11.67 hours)</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 00:45  09:15  30600s (~8.5 hours)  23:15  07:50  30900s (~8.58 hours) </span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 22:40  08:25  35100s (~9.75 hours) 00:30  08:20  28200s (~7.83 hours)</span></span></code></pre></div>
 </div>
 <div id="msl-local-time-of-mid-sleep" class="section level3">
 <h3><code>msl()</code>: Local time of mid-sleep</h3>
-<p><code>msl()</code> allows you to compute the local time of mid-sleep for workdays (<code>msw</code>) and work-free days (<code>msf</code>). It takes two arguments: <code>so</code> (local time of sleep onset) and <code>sd</code> (sleep duration).</p>
-<p>The output must be the sum of <code>so</code> with the half of <code>sd</code> duration in a circular time frame of 24 hours.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>msw <span class="ot">&lt;-</span> <span class="fu">msl</span>(data<span class="sc">$</span>so_w, data<span class="sc">$</span>sd_w)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>msf <span class="ot">&lt;-</span> <span class="fu">msl</span>(data<span class="sc">$</span>so_f, data<span class="sc">$</span>sd_f)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(so_w, sd_w, msw, so_f, sd_f, msf)</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 6</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   so_w   sd_w                 msw      so_f   sd_f                 msf     </span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;time&gt; &lt;Duration&gt;           &lt;time&gt;   &lt;time&gt; &lt;Duration&gt;           &lt;time&gt;  </span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 23:50  25500s (~7.08 hours) 03:22:30 00:20  35400s (~9.83 hours) 05:15:00</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 21:35  27000s (~7.5 hours)  01:20:00 23:30  28200s (~7.83 hours) 03:25:00</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 00:00  28800s (~8 hours)    04:00:00 00:40  33900s (~9.42 hours) 05:22:30</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 01:25  27000s (~7.5 hours)  05:10:00 01:20  22200s (~6.17 hours) 04:25:00</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 22:45  34500s (~9.58 hours) 03:32:30 00:35  26400s (~7.33 hours) 04:15:00</span></span></code></pre></div>
+<p><code>msl()</code> allows you to compute the local time of mid-sleep
+for workdays (<code>msw</code>) and work-free days (<code>msf</code>).
+It takes two arguments: <code>so</code> (local time of sleep onset) and
+<code>sd</code> (sleep duration).</p>
+<p>The output must be the sum of <code>so</code> with the half of
+<code>sd</code> duration in a circular time frame of 24 hours.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>msw <span class="ot">&lt;-</span> <span class="fu">msl</span>(data<span class="sc">$</span>so_w, data<span class="sc">$</span>sd_w)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>msf <span class="ot">&lt;-</span> <span class="fu">msl</span>(data<span class="sc">$</span>so_f, data<span class="sc">$</span>sd_f)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(so_w, sd_w, msw, so_f, sd_f, msf)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 6</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   so_w   sd_w                 msw      so_f   sd_f                 msf     </span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;time&gt; &lt;Duration&gt;           &lt;time&gt;   &lt;time&gt; &lt;Duration&gt;           &lt;time&gt;  </span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 23:50  25500s (~7.08 hours) 03:22:30 00:20  35400s (~9.83 hours) 05:15:00</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 21:35  27000s (~7.5 hours)  01:20:00 23:30  28200s (~7.83 hours) 03:25:00</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 00:00  28800s (~8 hours)    04:00:00 00:40  33900s (~9.42 hours) 05:22:30</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 01:25  27000s (~7.5 hours)  05:10:00 01:20  22200s (~6.17 hours) 04:25:00</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 22:45  34500s (~9.58 hours) 03:32:30 00:35  26400s (~7.33 hours) 04:15:00</span></span></code></pre></div>
 </div>
 </div>
 <div id="combining-workdays-and-work-free-days-variables" class="section level2">
 <h2>Combining workdays and work-free days variables</h2>
-<p>We now have computed all MCTQ variables for each section of the questionnaire. Let’s move to some variables that summarize our findings considering workdays and work-free days.</p>
+<p>We now have computed all MCTQ variables for each section of the
+questionnaire. Let’s move to some variables that summarize our findings
+considering workdays and work-free days.</p>
 <div id="sd_week-average-weekly-sleep-duration" class="section level3">
 <h3><code>sd_week()</code>: Average weekly sleep duration</h3>
-<p><code>sd_week()</code> allows you to compute the average weekly sleep duration. It takes three arguments: <code>sd_w</code> (sleep duration on workdays), <code>sd_f</code> (sleep duration on work-free days), and <code>wd</code> (number of workdays per week).</p>
-<p>The output must be the weighted mean of <code>sd_w</code> and <code>sd_f</code>, with <code>wd</code> and <code>fd(wd)</code> as weights, in a circular time frame of 24 hours.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>sd_week <span class="ot">&lt;-</span> <span class="fu">sd_week</span>(data<span class="sc">$</span>sd_w, data<span class="sc">$</span>sd_f, data<span class="sc">$</span>wd)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">sd_week_rounded =</span> mctq<span class="sc">::</span><span class="fu">round_time</span>(sd_week))</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(wd, sd_w, fd, sd_f, sd_week_rounded)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 5</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      wd sd_w                    fd sd_f                 sd_week_rounded     </span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;Duration&gt;           &lt;int&gt; &lt;Duration&gt;           &lt;Duration&gt;          </span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     5 25500s (~7.08 hours)     2 35400s (~9.83 hours) 28329s (~7.87 hours)</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 27000s (~7.5 hours)      5 28200s (~7.83 hours) 27857s (~7.74 hours)</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     5 28800s (~8 hours)        2 33900s (~9.42 hours) 30257s (~8.4 hours) </span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     2 27000s (~7.5 hours)      5 22200s (~6.17 hours) 23571s (~6.55 hours)</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     7 34500s (~9.58 hours)     0 26400s (~7.33 hours) 34500s (~9.58 hours)</span></span></code></pre></div>
+<p><code>sd_week()</code> allows you to compute the average weekly sleep
+duration. It takes three arguments: <code>sd_w</code> (sleep duration on
+workdays), <code>sd_f</code> (sleep duration on work-free days), and
+<code>wd</code> (number of workdays per week).</p>
+<p>The output must be the weighted mean of <code>sd_w</code> and
+<code>sd_f</code>, with <code>wd</code> and <code>fd(wd)</code> as
+weights, in a circular time frame of 24 hours.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>sd_week <span class="ot">&lt;-</span> <span class="fu">sd_week</span>(data<span class="sc">$</span>sd_w, data<span class="sc">$</span>sd_f, data<span class="sc">$</span>wd)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">sd_week_rounded =</span> mctq<span class="sc">::</span><span class="fu">round_time</span>(sd_week))</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(wd, sd_w, fd, sd_f, sd_week_rounded)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 5</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      wd sd_w                    fd sd_f                 sd_week_rounded     </span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;Duration&gt;           &lt;int&gt; &lt;Duration&gt;           &lt;Duration&gt;          </span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     5 25500s (~7.08 hours)     2 35400s (~9.83 hours) 28329s (~7.87 hours)</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 27000s (~7.5 hours)      5 28200s (~7.83 hours) 27857s (~7.74 hours)</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     5 28800s (~8 hours)        2 33900s (~9.42 hours) 30257s (~8.4 hours) </span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     2 27000s (~7.5 hours)      5 22200s (~6.17 hours) 23571s (~6.55 hours)</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     7 34500s (~9.58 hours)     0 26400s (~7.33 hours) 34500s (~9.58 hours)</span></span></code></pre></div>
 </div>
 <div id="sloss_week-weekly-sleep-loss" class="section level3">
 <h3><code>sloss_week()</code>: Weekly sleep loss</h3>
-<p><code>sloss_week()</code> allows you to compute the weekly sleep loss. It takes three arguments: <code>sd_w</code> (sleep duration on workdays), <code>sd_f</code> (sleep duration on work-free days), and <code>wd</code> (number of workdays per week).</p>
-<p>If <code>sd_week</code>(average weekly sleep duration) is greater than <code>sd_w</code>, the output must be the difference between <code>sd_week</code> and <code>sd_w</code> times <code>wd</code>. Else, it must return the difference between <code>sd_week</code> and <code>sd_f</code> times <code>fd(wd</code>) (number of free days per week). See <code>?sloss_week</code> to learn more.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>sloss_week <span class="ot">&lt;-</span> <span class="fu">sloss_week</span>(data<span class="sc">$</span>sd_w, data<span class="sc">$</span>sd_f, data<span class="sc">$</span>wd)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sloss_week_rounded =</span> mctq<span class="sc">::</span><span class="fu">round_time</span>(sloss_week))</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(wd, sd_w, fd, sd_f, sloss_week_rounded)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 5</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      wd sd_w                    fd sd_f                 sloss_week_rounded    </span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;Duration&gt;           &lt;int&gt; &lt;Duration&gt;           &lt;Duration&gt;            </span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     5 25500s (~7.08 hours)     2 35400s (~9.83 hours) 14143s (~3.93 hours)  </span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 27000s (~7.5 hours)      5 28200s (~7.83 hours) 1714s (~28.57 minutes)</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     5 28800s (~8 hours)        2 33900s (~9.42 hours) 7286s (~2.02 hours)   </span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     2 27000s (~7.5 hours)      5 22200s (~6.17 hours) 6857s (~1.9 hours)    </span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     7 34500s (~9.58 hours)     0 26400s (~7.33 hours) 0s</span></span></code></pre></div>
+<p><code>sloss_week()</code> allows you to compute the weekly sleep
+loss. It takes three arguments: <code>sd_w</code> (sleep duration on
+workdays), <code>sd_f</code> (sleep duration on work-free days), and
+<code>wd</code> (number of workdays per week).</p>
+<p>If <code>sd_week</code>(average weekly sleep duration) is greater
+than <code>sd_w</code>, the output must be the difference between
+<code>sd_week</code> and <code>sd_w</code> times <code>wd</code>. Else,
+it must return the difference between <code>sd_week</code> and
+<code>sd_f</code> times <code>fd(wd</code>) (number of free days per
+week). See <code>?sloss_week</code> to learn more.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>sloss_week <span class="ot">&lt;-</span> <span class="fu">sloss_week</span>(data<span class="sc">$</span>sd_w, data<span class="sc">$</span>sd_f, data<span class="sc">$</span>wd)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sloss_week_rounded =</span> mctq<span class="sc">::</span><span class="fu">round_time</span>(sloss_week))</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(wd, sd_w, fd, sd_f, sloss_week_rounded)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 5</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      wd sd_w                    fd sd_f                 sloss_week_rounded    </span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;Duration&gt;           &lt;int&gt; &lt;Duration&gt;           &lt;Duration&gt;            </span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     5 25500s (~7.08 hours)     2 35400s (~9.83 hours) 14143s (~3.93 hours)  </span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 27000s (~7.5 hours)      5 28200s (~7.83 hours) 1714s (~28.57 minutes)</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     5 28800s (~8 hours)        2 33900s (~9.42 hours) 7286s (~2.02 hours)   </span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     2 27000s (~7.5 hours)      5 22200s (~6.17 hours) 6857s (~1.9 hours)    </span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     7 34500s (~9.58 hours)     0 26400s (~7.33 hours) 0s</span></span></code></pre></div>
 </div>
 <div id="le_week-average-weekly-light-exposure" class="section level3">
 <h3><code>le_week()</code>: Average weekly light exposure</h3>
-<p><code>le_week()</code> allows you to compute the average weekly light exposure. It takes three arguments: <code>le_w</code> (light exposure on workdays), <code>le_f</code> (light exposure on work-free days), and <code>wd</code> (number of workdays per week).</p>
-<p>The output must be the weighted mean of <code>le_w</code> and <code>le_f</code>, with <code>wd</code> and <code>fd(wd)</code> as weights, in a circular time frame of 24 hours.</p>
-<p>Please note that light exposure is measured only with the full version of the standard MCTQ.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>le_week <span class="ot">&lt;-</span> <span class="fu">le_week</span>(data<span class="sc">$</span>le_w, data<span class="sc">$</span>le_f, data<span class="sc">$</span>wd)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">le_week_rounded =</span> mctq<span class="sc">::</span><span class="fu">round_time</span>(le_week))</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(wd, le_w, fd, le_f, le_week_rounded)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 5</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      wd le_w                   fd le_f                 le_week_rounded     </span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;Duration&gt;          &lt;int&gt; &lt;Duration&gt;           &lt;Duration&gt;          </span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     5 3600s (~1 hours)        2 12000s (~3.33 hours) 6000s (~1.67 hours) </span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 7200s (~2 hours)        5 12900s (~3.58 hours) 11271s (~3.13 hours)</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     5 8100s (~2.25 hours)     2 9900s (~2.75 hours)  8614s (~2.39 hours) </span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     2 6900s (~1.92 hours)     5 9300s (~2.58 hours)  8614s (~2.39 hours) </span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     7 7200s (~2 hours)        0 7800s (~2.17 hours)  7200s (~2 hours)</span></span></code></pre></div>
+<p><code>le_week()</code> allows you to compute the average weekly light
+exposure. It takes three arguments: <code>le_w</code> (light exposure on
+workdays), <code>le_f</code> (light exposure on work-free days), and
+<code>wd</code> (number of workdays per week).</p>
+<p>The output must be the weighted mean of <code>le_w</code> and
+<code>le_f</code>, with <code>wd</code> and <code>fd(wd)</code> as
+weights, in a circular time frame of 24 hours.</p>
+<p>Please note that light exposure is measured only with the full
+version of the standard MCTQ.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>le_week <span class="ot">&lt;-</span> <span class="fu">le_week</span>(data<span class="sc">$</span>le_w, data<span class="sc">$</span>le_f, data<span class="sc">$</span>wd)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">le_week_rounded =</span> mctq<span class="sc">::</span><span class="fu">round_time</span>(le_week))</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(wd, le_w, fd, le_f, le_week_rounded)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 5</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      wd le_w                   fd le_f                 le_week_rounded     </span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;Duration&gt;          &lt;int&gt; &lt;Duration&gt;           &lt;Duration&gt;          </span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     5 3600s (~1 hours)        2 12000s (~3.33 hours) 6000s (~1.67 hours) </span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 7200s (~2 hours)        5 12900s (~3.58 hours) 11271s (~3.13 hours)</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     5 8100s (~2.25 hours)     2 9900s (~2.75 hours)  8614s (~2.39 hours) </span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     2 6900s (~1.92 hours)     5 9300s (~2.58 hours)  8614s (~2.39 hours) </span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     7 7200s (~2 hours)        0 7800s (~2.17 hours)  7200s (~2 hours)</span></span></code></pre></div>
 </div>
-<div id="msf_sc-chronotype-or-corrected-local-time-of-mid-sleep-on-work-free-days" class="section level3">
-<h3><code>msf_sc()</code>: Chronotype or corrected local time of mid-sleep on work-free days</h3>
-<p><code>msf_sc()</code> allows you to compute the chronotype, or corrected local time of mid-sleep on work-free days. It takes five arguments: <code>msf</code> (local time of mid-sleep on work-free days), <code>sd_w</code> (sleep duration on workdays), <code>sd_f</code> (sleep duration on work-free days), <code>sd_week</code>(average weekly sleep duration), and <code>alarm_f</code> (a <code>logical</code> object indicating if the respondent uses an alarm clock to wake up on work-free days).</p>
-<p>If <code>sd_f</code> is less or equal than <code>sd_w</code>, the output must be <code>msf</code>. Else, it must return <code>msf</code> minus the difference between <code>sd_f</code> and <code>sd_week</code> divided by 2. <code>msf_sc</code> can only be computed if <code>alarm_f</code> is equal to <code>FALSE</code> (the function will return <code>NA</code> when <code>alarm_f == TRUE</code>).</p>
-<p><code>msf_sc</code> applies a correction to <code>msf</code>, removing an estimation of the effect from accumulated sleep debt on workdays that usually is compensated on work-free days. See <code>?msf_sc</code> to learn more.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>msf_sc <span class="ot">&lt;-</span> <span class="fu">msf_sc</span>(data<span class="sc">$</span>msf, data<span class="sc">$</span>sd_w, data<span class="sc">$</span>sd_f, data<span class="sc">$</span>sd_week, </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>                      data<span class="sc">$</span>alarm_f)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">msf_sc_rounded =</span> mctq<span class="sc">::</span><span class="fu">round_time</span>(msf_sc))</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(msf, msf_sc_rounded)</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 2</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   msf      msf_sc_rounded</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;time&gt;   &lt;time&gt;        </span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 05:15:00 04:16:04      </span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 03:25:00 03:22:09      </span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 05:22:30 04:52:09      </span></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 04:25:00 04:25:00      </span></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 04:15:00 04:15:00</span></span></code></pre></div>
+<div id="msf_sc-chronotype-or-sleep-corrected-local-time-of-mid-sleep-on-work-free-days" class="section level3">
+<h3><code>msf_sc()</code>: Chronotype or sleep-corrected local time of
+mid-sleep on work-free days</h3>
+<p><code>msf_sc()</code> allows you to compute the chronotype, or
+corrected local time of mid-sleep on work-free days. It takes five
+arguments: <code>msf</code> (local time of mid-sleep on work-free days),
+<code>sd_w</code> (sleep duration on workdays), <code>sd_f</code> (sleep
+duration on work-free days), <code>sd_week</code>(average weekly sleep
+duration), and <code>alarm_f</code> (a <code>logical</code> object
+indicating if the respondent uses an alarm clock to wake up on work-free
+days).</p>
+<p>If <code>sd_f</code> is less or equal than <code>sd_w</code>, the
+output must be <code>msf</code>. Else, it must return <code>msf</code>
+minus the difference between <code>sd_f</code> and <code>sd_week</code>
+divided by 2. <code>msf_sc</code> can only be computed if
+<code>alarm_f</code> is equal to <code>FALSE</code> (the function will
+return <code>NA</code> when <code>alarm_f == TRUE</code>).</p>
+<p><code>msf_sc</code> applies a correction to <code>msf</code>,
+removing an estimation of the effect from accumulated sleep debt on
+workdays that usually is compensated on work-free days. See
+<code>?msf_sc</code> to learn more.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>msf_sc <span class="ot">&lt;-</span> <span class="fu">msf_sc</span>(data<span class="sc">$</span>msf, data<span class="sc">$</span>sd_w, data<span class="sc">$</span>sd_f, data<span class="sc">$</span>sd_week, </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                      data<span class="sc">$</span>alarm_f)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">msf_sc_rounded =</span> mctq<span class="sc">::</span><span class="fu">round_time</span>(msf_sc))</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(msf, msf_sc_rounded)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 2</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   msf      msf_sc_rounded</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;time&gt;   &lt;time&gt;        </span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 05:15:00 04:16:04      </span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 03:25:00 03:22:09      </span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 05:22:30 04:52:09      </span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 04:25:00 04:25:00      </span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 04:15:00 04:15:00</span></span></code></pre></div>
 </div>
 <div id="sjl_rel-relative-social-jetlag" class="section level3">
 <h3><code>sjl_rel()</code>: Relative social jetlag</h3>
-<p><code>sjl_rel()</code> allows you to compute the relative social jetlag. It takes at least two arguments: <code>msw</code> (local time of mid-sleep on workdays) and <code>msf</code> (local time of mid-sleep on work-free days).</p>
-<p>The output must be the difference between <code>msf</code> and <code>msw</code> in a circular time frame of 24 hours.</p>
-<p>In case you don’t know, social jet lag is a concept developed by Wittmann et al. (<a href="https://doi.org/10.1080/07420520500545979">2006</a>) that represents the discrepancy between social and biological time.</p>
-<p>The difference described above may seem trivial or easy to compute, but it’s not. See the <code>vignette(&quot;sjl-computation&quot;, package = &quot;mctq&quot;)</code> to learn more.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>sjl_rel <span class="ot">&lt;-</span> <span class="fu">sjl_rel</span>(data<span class="sc">$</span>msw, data<span class="sc">$</span>msf)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(msw, msf, sjl_rel)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 3</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   msw      msf      sjl_rel              </span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;time&gt;   &lt;time&gt;   &lt;Duration&gt;           </span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 03:22:30 05:15:00 6750s (~1.88 hours)  </span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 01:20:00 03:25:00 7500s (~2.08 hours)  </span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 04:00:00 05:22:30 4950s (~1.38 hours)  </span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 05:10:00 04:25:00 -2700s (~-45 minutes)</span></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 03:32:30 04:15:00 2550s (~42.5 minutes)</span></span></code></pre></div>
+<p><code>sjl_rel()</code> allows you to compute the relative social
+jetlag. It takes at least two arguments: <code>msw</code> (local time of
+mid-sleep on workdays) and <code>msf</code> (local time of mid-sleep on
+work-free days).</p>
+<p>The output must be the difference between <code>msf</code> and
+<code>msw</code> in a circular time frame of 24 hours.</p>
+<p>In case you don’t know, social jet lag is a concept developed by
+Wittmann et al. (<a href="https://doi.org/10.1080/07420520500545979">2006</a>) that
+represents the discrepancy between social and biological time.</p>
+<p>The difference described above may seem trivial or easy to compute,
+but it’s not. See the
+<code>vignette(&quot;sjl-computation&quot;, package = &quot;mctq&quot;)</code> to learn
+more.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>sjl_rel <span class="ot">&lt;-</span> <span class="fu">sjl_rel</span>(data<span class="sc">$</span>msw, data<span class="sc">$</span>msf)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(msw, msf, sjl_rel)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 3</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   msw      msf      sjl_rel              </span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;time&gt;   &lt;time&gt;   &lt;Duration&gt;           </span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 03:22:30 05:15:00 6750s (~1.88 hours)  </span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 01:20:00 03:25:00 7500s (~2.08 hours)  </span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 04:00:00 05:22:30 4950s (~1.38 hours)  </span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 05:10:00 04:25:00 -2700s (~-45 minutes)</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 03:32:30 04:15:00 2550s (~42.5 minutes)</span></span></code></pre></div>
 </div>
 <div id="sjl-absolute-social-jetlag" class="section level3">
 <h3><code>sjl()</code>: Absolute social jetlag</h3>
-<p><code>sjl()</code> allows you to compute the absolute social jetlag. This function works the same way as <code>sjl_rel</code>, but it returns an absolute value. In fact, <code>sjl_rel()</code> is just a wrapper function to <code>sjl()</code>, but with the <code>abs</code> argument set as <code>FALSE</code>.</p>
-<p>If you already have <code>sjl_rel</code> computed, you don’t really need to compute it twice, you can just use <code>abs(sjl_rel)</code>. That’s what we’re going to do with our data.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>sjl <span class="ot">&lt;-</span> <span class="fu">abs</span>(data<span class="sc">$</span>sjl_rel)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(sjl_rel, sjl)</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 2</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   sjl_rel               sjl                  </span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;Duration&gt;            &lt;Duration&gt;           </span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 6750s (~1.88 hours)   6750s (~1.88 hours)  </span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 7500s (~2.08 hours)   7500s (~2.08 hours)  </span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 4950s (~1.38 hours)   4950s (~1.38 hours)  </span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 -2700s (~-45 minutes) 2700s (~45 minutes)  </span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2550s (~42.5 minutes) 2550s (~42.5 minutes)</span></span></code></pre></div>
+<p><code>sjl()</code> allows you to compute the absolute social jetlag.
+This function works the same way as <code>sjl_rel</code>, but it returns
+an absolute value. In fact, <code>sjl_rel()</code> is just a wrapper
+function to <code>sjl()</code>, but with the <code>abs</code> argument
+set as <code>FALSE</code>.</p>
+<p>If you already have <code>sjl_rel</code> computed, you don’t really
+need to compute it twice, you can just use <code>abs(sjl_rel)</code>.
+That’s what we’re going to do with our data.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>sjl <span class="ot">&lt;-</span> <span class="fu">abs</span>(data<span class="sc">$</span>sjl_rel)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(sjl_rel, sjl)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 2</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   sjl_rel               sjl                  </span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;Duration&gt;            &lt;Duration&gt;           </span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 6750s (~1.88 hours)   6750s (~1.88 hours)  </span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 7500s (~2.08 hours)   7500s (~2.08 hours)  </span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 4950s (~1.38 hours)   4950s (~1.38 hours)  </span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 -2700s (~-45 minutes) 2700s (~45 minutes)  </span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2550s (~42.5 minutes) 2550s (~42.5 minutes)</span></span></code></pre></div>
 </div>
 </div>
 <div id="success" class="section level2">
 <h2>Success!</h2>
-<p>We have now processed all the MCTQ standard variables proposed by the MCTQ authors.</p>
-<p>Before we look at the final data, let’s first reorder the columns to a nice logical order and remove some <code>*_rounded</code> variables that we created just for show.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">relocate</span>(</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>            id, work, wd, fd,</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>            bt_w, sprep_w, slat_w, so_w, se_w, si_w, gu_w, alarm_w,</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>            wake_before_w, sd_w, tbt_w, le_w, msw,</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>            bt_f, sprep_f, slat_f, so_f, se_f, si_f, gu_f, alarm_f,</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>            reasons_f, reasons_why_f, sd_f, tbt_f, le_f, msf,</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>            sd_week, sloss_week, le_week, msf_sc, sjl_rel, sjl</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>            ) <span class="sc">%&gt;%</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>dplyr<span class="sc">::</span><span class="fu">ends_with</span>(<span class="st">&quot;_rounded&quot;</span>))</span></code></pre></div>
+<p>We have now processed all the MCTQ standard variables proposed by the
+MCTQ authors.</p>
+<p>Before we look at the final data, let’s first reorder the columns to
+a nice logical order and remove some <code>*_rounded</code> variables
+that we created just for show.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">relocate</span>(</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>            id, work, wd, fd,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>            bt_w, sprep_w, slat_w, so_w, se_w, si_w, gu_w, alarm_w,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>            wake_before_w, sd_w, tbt_w, le_w, msw,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>            bt_f, sprep_f, slat_f, so_f, se_f, si_f, gu_f, alarm_f,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>            reasons_f, reasons_why_f, sd_f, tbt_f, le_f, msf,</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>            sd_week, sloss_week, le_week, msf_sc, sjl_rel, sjl</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>            ) <span class="sc">%&gt;%</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>dplyr<span class="sc">::</span><span class="fu">ends_with</span>(<span class="st">&quot;_rounded&quot;</span>))</span></code></pre></div>
 <p>And our final dataset is …</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>data</span>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 37</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      id work     wd    fd bt_w   sprep_w slat_w              so_w   se_w  </span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;lgl&gt; &lt;int&gt; &lt;int&gt; &lt;time&gt; &lt;time&gt;  &lt;Duration&gt;          &lt;time&gt; &lt;time&gt;</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 TRUE      5     2 22:50  23:20   1800s (~30 minutes) 23:50  06:55 </span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 TRUE      2     5 21:25  21:30   300s (~5 minutes)   21:35  05:05 </span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3 TRUE      5     2 22:30  23:10   3000s (~50 minutes) 00:00  08:00 </span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     4 TRUE      2     5 00:45  01:10   900s (~15 minutes)  01:25  08:55 </span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     5 TRUE      7     0 22:40  22:40   300s (~5 minutes)   22:45  08:20 </span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 28 more variables: si_w &lt;Duration&gt;, gu_w &lt;time&gt;, alarm_w &lt;lgl&gt;,</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   wake_before_w &lt;lgl&gt;, sd_w &lt;Duration&gt;, tbt_w &lt;Duration&gt;, le_w &lt;Duration&gt;,</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   msw &lt;time&gt;, bt_f &lt;time&gt;, sprep_f &lt;time&gt;, slat_f &lt;Duration&gt;, so_f &lt;time&gt;,</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   se_f &lt;time&gt;, si_f &lt;Duration&gt;, gu_f &lt;time&gt;, alarm_f &lt;lgl&gt;, reasons_f &lt;lgl&gt;,</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   reasons_why_f &lt;chr&gt;, sd_f &lt;Duration&gt;, tbt_f &lt;Duration&gt;, le_f &lt;Duration&gt;,</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   msf &lt;time&gt;, sd_week &lt;Duration&gt;, sloss_week &lt;Duration&gt;, le_week &lt;Duration&gt;,</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   msf_sc &lt;time&gt;, sjl_rel &lt;Duration&gt;, sjl &lt;Duration&gt;</span></span></code></pre></div>
+<p>If you’re using <a href="https://www.rstudio.com/">RStudio</a>, you
+can run all the code showed above and then type <code>View(data)</code>
+in the console to explore the final result.</p>
+<p>If you don’t feel comfortable with the way <code>Duration</code>
+objects are printed, <code>mctq</code> provides a utility function to
+help you. Just use <code>pretty_mctq()</code> to get a better view.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pretty_mctq</span>(data, <span class="at">round =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 37</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      id work     wd    fd bt_w   sprep_w slat_w              so_w   se_w  </span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;lgl&gt; &lt;int&gt; &lt;int&gt; &lt;time&gt; &lt;time&gt;  &lt;Duration&gt;          &lt;time&gt; &lt;time&gt;</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 TRUE      5     2 22:50  23:20   1800s (~30 minutes) 23:50  06:55 </span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 TRUE      2     5 21:25  21:30   300s (~5 minutes)   21:35  05:05 </span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3 TRUE      5     2 22:30  23:10   3000s (~50 minutes) 00:00  08:00 </span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     4 TRUE      2     5 00:45  01:10   900s (~15 minutes)  01:25  08:55 </span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     5 TRUE      7     0 22:40  22:40   300s (~5 minutes)   22:45  08:20 </span></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 28 more variables: si_w &lt;Duration&gt;, gu_w &lt;time&gt;, alarm_w &lt;lgl&gt;,</span></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   wake_before_w &lt;lgl&gt;, sd_w &lt;Duration&gt;, tbt_w &lt;Duration&gt;, le_w &lt;Duration&gt;,</span></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   msw &lt;time&gt;, bt_f &lt;time&gt;, sprep_f &lt;time&gt;, slat_f &lt;Duration&gt;, so_f &lt;time&gt;,</span></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   se_f &lt;time&gt;, si_f &lt;Duration&gt;, gu_f &lt;time&gt;, alarm_f &lt;lgl&gt;, reasons_f &lt;lgl&gt;,</span></span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   reasons_why_f &lt;chr&gt;, sd_f &lt;Duration&gt;, tbt_f &lt;Duration&gt;, le_f &lt;Duration&gt;,</span></span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   msf &lt;time&gt;, sd_week &lt;Duration&gt;, sloss_week &lt;Duration&gt;, le_week &lt;Duration&gt;,</span></span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   msf_sc &lt;time&gt;, sjl_rel &lt;Duration&gt;, sjl &lt;Duration&gt;</span></span></code></pre></div>
-<p>If you’re using <a href="https://www.rstudio.com/">RStudio</a>, you can run all the code showed above and then type <code>View(data)</code> in the console to explore the final result.</p>
-<p>If you don’t feel comfortable with the way <code>Duration</code> objects are printed, <code>mctq</code> provides a utility function to help you. Just use <code>pretty_mctq()</code> to get a better view.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pretty_mctq</span>(data, <span class="at">round =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 37</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      id work     wd    fd bt_w   sprep_w slat_w so_w  se_w  si_w   gu_w  alarm_w</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;lgl&gt; &lt;int&gt; &lt;int&gt; &lt;time&gt; &lt;time&gt;  &lt;time&gt; &lt;tim&gt; &lt;tim&gt; &lt;time&gt; &lt;tim&gt; &lt;lgl&gt;  </span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 TRUE      5     2 22:50  23:20   30&#39;00&quot; 23:50 06:55 25&#39;00&quot; 07:20 TRUE   </span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 TRUE      2     5 21:25  21:30   05&#39;00&quot; 21:35 05:05 05&#39;00&quot; 05:10 TRUE   </span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3 TRUE      5     2 22:30  23:10   50&#39;00&quot; 00:00 08:00 15&#39;00&quot; 08:15 TRUE   </span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     4 TRUE      2     5 00:45  01:10   15&#39;00&quot; 01:25 08:55 20&#39;00&quot; 09:15 TRUE   </span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     5 TRUE      7     0 22:40  22:40   05&#39;00&quot; 22:45 08:20 05&#39;00&quot; 08:25 TRUE   </span></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 25 more variables: wake_before_w &lt;lgl&gt;, sd_w &lt;time&gt;, tbt_w &lt;time&gt;,</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   le_w &lt;time&gt;, msw &lt;time&gt;, bt_f &lt;time&gt;, sprep_f &lt;time&gt;, slat_f &lt;time&gt;,</span></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   so_f &lt;time&gt;, se_f &lt;time&gt;, si_f &lt;time&gt;, gu_f &lt;time&gt;, alarm_f &lt;lgl&gt;,</span></span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   reasons_f &lt;lgl&gt;, reasons_why_f &lt;chr&gt;, sd_f &lt;time&gt;, tbt_f &lt;time&gt;,</span></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   le_f &lt;time&gt;, msf &lt;time&gt;, sd_week &lt;time&gt;, sloss_week &lt;time&gt;, le_week &lt;time&gt;,</span></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   msf_sc &lt;time&gt;, sjl_rel &lt;time&gt;, sjl &lt;time&gt;</span></span></code></pre></div>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      id work     wd    fd bt_w   sprep_w slat_w so_w  se_w  si_w   gu_w  alarm_w</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;lgl&gt; &lt;int&gt; &lt;int&gt; &lt;time&gt; &lt;time&gt;  &lt;time&gt; &lt;tim&gt; &lt;tim&gt; &lt;time&gt; &lt;tim&gt; &lt;lgl&gt;  </span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 TRUE      5     2 22:50  23:20   30&#39;00&quot; 23:50 06:55 25&#39;00&quot; 07:20 TRUE   </span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 TRUE      2     5 21:25  21:30   05&#39;00&quot; 21:35 05:05 05&#39;00&quot; 05:10 TRUE   </span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3 TRUE      5     2 22:30  23:10   50&#39;00&quot; 00:00 08:00 15&#39;00&quot; 08:15 TRUE   </span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     4 TRUE      2     5 00:45  01:10   15&#39;00&quot; 01:25 08:55 20&#39;00&quot; 09:15 TRUE   </span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     5 TRUE      7     0 22:40  22:40   05&#39;00&quot; 22:45 08:20 05&#39;00&quot; 08:25 TRUE   </span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 25 more variables: wake_before_w &lt;lgl&gt;, sd_w &lt;time&gt;, tbt_w &lt;time&gt;,</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   le_w &lt;time&gt;, msw &lt;time&gt;, bt_f &lt;time&gt;, sprep_f &lt;time&gt;, slat_f &lt;time&gt;,</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   so_f &lt;time&gt;, se_f &lt;time&gt;, si_f &lt;time&gt;, gu_f &lt;time&gt;, alarm_f &lt;lgl&gt;,</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   reasons_f &lt;lgl&gt;, reasons_why_f &lt;chr&gt;, sd_f &lt;time&gt;, tbt_f &lt;time&gt;,</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   le_f &lt;time&gt;, msf &lt;time&gt;, sd_week &lt;time&gt;, sloss_week &lt;time&gt;, le_week &lt;time&gt;,</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   msf_sc &lt;time&gt;, sjl_rel &lt;time&gt;, sjl &lt;time&gt;</span></span></code></pre></div>
 </div>
 <div id="utilities" class="section level2">
 <h2>Utilities</h2>
-<p>Before we end, it’s important to note that <code>mctq</code> also provides several utility tools to help with your MCTQ data. Here’s a list of them.</p>
+<p>Before we end, it’s important to note that <code>mctq</code> also
+provides several utility tools to help with your MCTQ data. Here’s some
+of them.</p>
 <ul>
-<li><code>assign_date()</code>: Assign dates to two sequential hours.</li>
+<li><code>assign_date()</code>: Assign dates to two sequential
+hours.</li>
 <li><code>cycle_time()</code>: Cycle time objects.</li>
-<li><code>pretty_mctq()</code>: Make a MCTQ dataset more presentable.</li>
+<li><code>pretty_mctq()</code>: Make a MCTQ dataset more
+presentable.</li>
 <li><code>qplot_walk()</code>: Walk through distribution plots.</li>
 <li><code>random_mctq()</code>: Build a random MCTQ case.</li>
-<li><code>raw_data()</code>: Get paths to <code>mctq</code> raw datasets.</li>
+<li><code>raw_data()</code>: Get paths to <code>mctq</code> raw
+datasets.</li>
 <li><code>round_time()</code>: Round time values.</li>
-<li><code>shorter_interval()</code>: Find the shorter interval between two hours.</li>
+<li><code>shorter_interval()</code>: Find the shorter interval between
+two hours.</li>
 <li><code>sum_time()</code>: Sum time objects.</li>
 </ul>
-<p><code>mctq</code> also provides fictional datasets of the standard, micro, and shift versions for testing and learning purposes.</p>
+<p><code>mctq</code> also provides fictional datasets of the standard,
+micro, and shift versions for testing and learning purposes.</p>
 <ul>
-<li><code>std_mctq</code>: A fictional standard MCTQ dataset (<code>?std_mctq</code>).</li>
-<li><code>micro_mctq</code>: A fictional <span class="math inline">\(\mu\)</span>MCTQ dataset (<code>?micro_mctq</code>).</li>
-<li><code>shift_mctq</code>: A fictional MCTQ<span class="math inline">\(^{Shift}\)</span> dataset (<code>?shift_mctq</code>).</li>
+<li><code>std_mctq</code>: A fictional standard MCTQ dataset
+(<code>?std_mctq</code>).</li>
+<li><code>micro_mctq</code>: A fictional <span class="math inline">\(\mu\)</span>MCTQ dataset
+(<code>?micro_mctq</code>).</li>
+<li><code>shift_mctq</code>: A fictional MCTQ<span class="math inline">\(^{Shift}\)</span> dataset
+(<code>?shift_mctq</code>).</li>
 </ul>
-<p>We encouraged you to read the documentation of the features above. You may find it worth your time.</p>
+<p>We encouraged you to read the documentation of the features above.
+You may find it worth your time.</p>
 </div>
 
 

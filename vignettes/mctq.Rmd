@@ -2,7 +2,7 @@
 title: "Introduction to mctq"
 output: rmarkdown::html_vignette
 description: >
-  This article takes a quick tour of all standard Munich Chronotype 
+  This article takes a quick tour of all standard Munich ChronoType 
   Questionnaire (MCTQ) main functions from the `mctq` package.
 vignette: >
   %\VignetteIndexEntry{Introduction to mctq}
@@ -18,9 +18,9 @@ knitr::opts_chunk$set(
 ```
 
 
-This article takes a quick tour of the Munich Chronotype Questionnaire (MCTQ) main functions from the `mctq` package. Please see the function documentation and other articles/vignettes for more details.
+This article takes a quick tour of the Munich ChronoType Questionnaire (MCTQ) main functions from the `mctq` package. Please see the function documentation and other articles/vignettes for more details.
 
-The same features presented here can also be used with $\mu$MCTQ. To make it easy for newcomers, some MCTQ$^{Shift}$ functions are not shown.
+The same features presented here can also be used with $\mu$MCTQ. To make it easy for newcomers, some MCTQ$^{Shift}$ functions and other special functions are not shown.
 
 We assume that you already have [R](https://www.r-project.org/) installed and have some familiarity with R and MCTQ data. We also strongly recommend using [RStudio](https://www.rstudio.com/) as your IDE (Integrated Development Environment).
 
@@ -30,16 +30,10 @@ It's a good idea to have the standard MCTQ questionnaire open while reading this
 
 Let's start with the basics. The first thing you must do to use `mctq` is to have some MCTQ data and `mctq` installed and loaded.
 
-To install a GitHub package you're going to need the [remotes](https://remotes.r-lib.org/) package. If you don't already have it installed, just type the following command in your console.
+Install `mctq` with:
 
 ```{r, eval = FALSE}
-install.packages("remotes")
-```
-
-After `remotes` is installed, install `mctq` with:
-
-```{r, eval = FALSE}
-remotes::install_github("ropensci/mctq")
+install.packages("mctq", dependencies = TRUE)
 ```
 
 Great! We now must load the package to memory to start using it. Do this with:
@@ -69,7 +63,7 @@ data <- readr::read_csv(mctq::raw_data("vignette_mctq.csv"),
 
 Due to the circular nature of time, we strongly recommend that you use appropriate temporal objects while dealing with date/time in R. That can help you get rid of several computation mistakes while trying to adapt your data from a base 10 to a system rooted in a base 12 numerical system.
 
-Teaching you how to parse/convert your data is outside the scope of this article. Please refer to the [lubridate](https://lubridate.tidyverse.org/) and [hms](https://hms.tidyverse.org/) package documentation to learn more about them. These two are essential packages to deal with date/time data in R. We also recommend that you read the [Dates and times](https://r4ds.had.co.nz/dates-and-times.html#time-spans) chapter from Wickham & Grolemund's book "R for Data Science".
+Teaching you how to parse/convert your data is outside the scope of this article. Please refer to the [lubridate](https://lubridate.tidyverse.org/) and [hms](https://hms.tidyverse.org/) package documentation to learn more about them. These two are essential packages to deal with date/time data in R. We also recommend that you read the [Dates and times](https://r4ds.had.co.nz/dates-and-times.html) chapter from Wickham & Grolemund's book "R for Data Science".
 
 Here we are interested in two types of time objects: `Duration` objects, to store time spans, such as sleep latency, and `hms` objects, to store local time values, such as bedtime.
 
@@ -81,7 +75,7 @@ data
 
 As you can see, our data came in different formats. For example, the column `bt_w` (local time of going to bed on workdays) is in `hours:minutes` format, while `slat_w` (sleep latency on workdays) is a duration expressed in minutes.
 
-Our fictional data will be parsed/converted with the code below. Please note that the `lubridate` and `hms` packages are equipped with easy tools and great documentation to help you with this task.
+Our fictional data will be parsed/converted with the code below. Please note that the [lubridate](https://lubridate.tidyverse.org/) and [hms](https://hms.tidyverse.org/) packages are equipped with easy tools and great documentation to help you with this task.
 
 ```{r, warnings = FALSE, message = FALSE}
 library(dplyr)
@@ -89,7 +83,7 @@ library(hms)
 library(lubridate)
 
 data <- data %>% dplyr::mutate(
-  dplyr::across(dplyr::matches("^id$|^wd$"), as.integer),
+  dplyr::across(c("id", "wd"), as.integer),
   dplyr::across(dplyr::matches("^work$|^alarm_|^wake_|^reasons_f$"),
                 as.logical),
   dplyr::across(dplyr::matches("^bt_|^sprep_|^se_"), hms::parse_hm),
@@ -108,7 +102,7 @@ data
 
 ## Workdays and work-free days variables
 
-`mctq` provides a complete and consistent toolkit to process Munich Chronotype Questionnaire (MCTQ) data. To start this process, we must first compute some MCTQ variables related to each section of the questionnaire.
+`mctq` provides a complete and consistent toolkit to process Munich ChronoType Questionnaire (MCTQ) data. To start this process, we must first compute some MCTQ variables related to each section of the questionnaire.
 
 We're going to use direct assigning while computing the MCTQ variables, just because is more straightforward for the examples. But, we recommend assigning variables to your dataset by using the `mutate()` function, included in the  [dplyr](https://dplyr.tidyverse.org/) package.
 
@@ -130,6 +124,8 @@ data %>% dplyr::select(wd, fd)
 `so()` allows you to compute the local time of sleep onset for workdays (`so_w`) and work-free days (`so_f`). It takes two arguments: `sprep` (local time of preparing to sleep) and `slat` (sleep latency or time to fall asleep after preparing to sleep).
 
 The output must be the sum of `sprep` and `slat` in a circular time frame of 24 hours.
+
+What is a circular time frame of 24 hours? Run `?cycle_time` in your console or click in this [link](https://docs.ropensci.org/mctq/reference/cycle_time.html) for a detail explanation.
 
 ```{r, warnings = FALSE, message = FALSE}
 data$so_w <- so(data$sprep_w, data$slat_w)
@@ -248,7 +244,7 @@ data <- data %>% dplyr::mutate(le_week_rounded = mctq::round_time(le_week))
 data %>% dplyr::select(wd, le_w, fd, le_f, le_week_rounded)
 ```
 
-### `msf_sc()`: Chronotype or corrected local time of mid-sleep on work-free days
+### `msf_sc()`: Chronotype or sleep-corrected local time of mid-sleep on work-free days
 
 `msf_sc()` allows you to compute the chronotype, or corrected local time of mid-sleep on work-free days. It takes five arguments: `msf` (local time of mid-sleep on work-free days), `sd_w` (sleep duration on workdays), `sd_f` (sleep duration on work-free days), `sd_week`(average weekly sleep duration), and `alarm_f` (a `logical` object indicating if the respondent uses an alarm clock to wake up on work-free days).
 
@@ -334,7 +330,7 @@ pretty_mctq(data, round = FALSE)
 
 ## Utilities
 
-Before we end, it's important to note that `mctq` also provides several utility tools to help with your MCTQ data. Here's a list of them.
+Before we end, it's important to note that `mctq` also provides several utility tools to help with your MCTQ data. Here's some of them.
 
 * `assign_date()`: Assign dates to two sequential hours.
 * `cycle_time()`: Cycle time objects.

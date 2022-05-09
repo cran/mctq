@@ -7,19 +7,21 @@
 fd(wd)
 }
 \arguments{
-\item{wd}{An \link[checkmate:checkIntegerish]{integerish} \code{numeric} object or
-an \code{integer} object corresponding to the \strong{number of workdays per week}
-from a standard or micro version of the MCTQ questionnaire.}
+\item{wd}{An \link[checkmate:checkIntegerish]{integerish}
+\code{\link[base:numeric]{numeric}} object or an \code{\link[base:integer]{integer}}
+object corresponding to the \strong{number of workdays per week} from a standard
+or micro version of the MCTQ questionnaire.}
 }
 \value{
-An \code{integer} object corresponding to the difference between the
-number of days in a week (7) and the number of workdays (\code{wd}).
+An \code{\link[base:integer]{integer}} object corresponding to the
+difference between the number of days in a week (7) and the number of
+workdays (\code{wd}).
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#maturing}{\figure{lifecycle-maturing.svg}{options: alt='[Maturing]'}}}{\strong{[Maturing]}}
 
 \code{fd()} computes the \strong{number of work-free days per week} for standard
-and micro versions of the Munich Chronotype Questionnaire (MCTQ).
+and micro versions of the Munich ChronoType Questionnaire (MCTQ).
 }
 \details{
 \strong{Standard MCTQ} functions were created following the guidelines in
@@ -46,7 +48,7 @@ as follows.
 
 Where:
 \itemize{
-\item \eqn{WD} = number of workdays ("I have a regular work schedule and work ___
+\item \eqn{WD} = Number of workdays ("I have a regular work schedule and work ___
 days per week").
 }
 }
@@ -101,6 +103,7 @@ Other MCTQ functions:
 \code{\link{sd_overall}()},
 \code{\link{sd_week}()},
 \code{\link{sdu}()},
+\code{\link{sjl_sc}()},
 \code{\link{sjl_weighted}()},
 \code{\link{sjl}()},
 \code{\link{so}()},
