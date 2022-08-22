@@ -1,6 +1,15 @@
+<!--- https://r-pkgs.org/release.html -->
 <!--- https://devguide.ropensci.org/releasing.html -->
 <!--- https://style.tidyverse.org/news.html -->
 <!--- https://semver.org/ -->
+
+# mctq 0.3.0 (2022-08-20)
+
+* Re-rendered documentation for compatibility with R-devel.
+* Some minor documentation issues were resolved.
+* `mctq` has been self-certified on the [OpenSSF Best Practices Badge
+Program](https://bestpractices.coreinfrastructure.org/en).
+* `chronotype()`, a wrapper function for `msf_sc()`, was removed.
 
 # mctq 0.2.0 (2022-05-08)
 
@@ -8,7 +17,6 @@
 * `shorter_interval()` now don't have the `inverse` argument. Use `longer_interval()` instead.
 * `shorter_duration()` and `longer_duration()`, two functions that return the shorter and the longer duration between two hours, were introduced.
 * `sjl_sc()` and `sjl_sc_rel()`, two functions that allow the user to compute Jankowski's MCTQ sleep-corrected social jet lag, were introduced.
-
 
 # mctq 0.1.0 (2021-11-04)
 
@@ -19,7 +27,6 @@
 better to wait and see if the user community don't have any issues with the
 features.
 
-
 # mctq 0.0.0.9002 (prerelease)
 
 * `mctq` is now a
@@ -28,7 +35,6 @@ by @ropensci! 🎉
 * The package repository was transferred to the @ropensci organization. All
 links related to `mctq` have been changed. Old links have a redirect protocol to
 point to the new repository and new website.
-
 
 # mctq 0.0.0.9001 (prerelease)
 

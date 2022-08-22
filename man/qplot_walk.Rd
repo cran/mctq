@@ -58,17 +58,16 @@ from a data frame.
 \details{
 \subsection{Requirements}{
 
-This function requires the \code{\link[utils:utils-package]{utils}},
+This function requires the \code{\link[ggplot2:ggplot2-package]{ggplot2}},
 \code{\link[grDevices:grDevices-package]{grDevices}}, and
-\code{\link[ggplot2:ggplot2-package]{ggplot2}} packages and can only run in
+\code{\link[utils:utils-package]{utils}} packages and can only run in
 interactive mode. The \code{\link[utils:utils-package]{utils}} and
 \code{\link[grDevices:grDevices-package]{grDevices}} packages comes with a standard R
 installation and is typically loaded by default. Most people also run R
 interactively.
 
 If you don't have any or one of the packages mentioned above, you can install
-them with \code{install.packages("utils")}, \code{install.packages("grDevices")}, and
-\code{install.packages("ggplot2")}.
+them with \code{install.packages("ggplot2", "grDevices", "utils")}.
 }
 
 \subsection{Plot recover}{
@@ -109,15 +108,19 @@ You can disable this behavior by using \code{midday_change = FALSE}.
 Example: Say you have a vector of time values that cross the midnight hour
 (e.g., an \code{\link[hms:hms]{hms}} vector with \code{22:00}, \code{23:00}, \code{00:00}, \code{01:00}
 values). If you use \code{midday_change = FALSE}, your data will be represented
-linearly.\preformatted{00:00 01:00                                22:00 23:00
+linearly.
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{00:00 01:00                                22:00 23:00
   |-----|------------------------------------|-----|------->
-}
+}\if{html}{\out{</div>}}
 
 By using \code{midday_change = TRUE} (default), \code{qplot_walk()} will fit your data
-to a circular time frame of 24 hours.\preformatted{             day 1                         day 2
+to a circular time frame of 24 hours.
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{             day 1                         day 2
                 22:00 23:00 00:00 01:00
 ------------------|-----|-----|-----|---------------------->
-}
+}\if{html}{\out{</div>}}
 }
 
 \subsection{\code{id} variables}{

@@ -23,8 +23,9 @@ maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lif
 coverage](https://codecov.io/gh/ropensci/mctq/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ropensci/mctq?branch=main)
 [![License:
 MIT](https://img.shields.io/badge/license-MIT-green)](https://choosealicense.com/licenses/mit/)
-[![Buy Me A Coffee donate
-button](https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg)](https://ko-fi.com/danielvartan)
+[![fair-software.eu](https://img.shields.io/badge/fair--software.eu-%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F-green)](https://fair-software.eu)
+[![CII Best
+Practices](https://bestpractices.coreinfrastructure.org/projects/6244/badge)](https://bestpractices.coreinfrastructure.org/projects/6244)
 <!-- badges: end -->
 
 ## Overview
@@ -110,11 +111,11 @@ to deal with date/time values in R. If your dataset does not conform to
 this structure, you first need to convert your data to it. Please refer
 to those package documentations to learn more about them.
 
-Due to the circular nature of time, we strongly recommend that you use
-appropriate temporal objects while dealing with date/time in R. This can
-help you get rid of several computation mistakes while trying to adapt
-your data from a base 10 to a system rooted in a base 12 numerical
-system.
+Due to the [circular nature of time](https://youtu.be/eelVqfm8vVc), we
+strongly recommend that you use appropriate temporal objects while
+dealing with date/time in R. This can help you get rid of several
+computation mistakes while trying to adapt your data from a base 10 to a
+system rooted in a base 12 numerical system.
 
 ### Workdays and work-free days variables
 
@@ -204,7 +205,7 @@ citation("mctq")
 #> 
 #>   Vartanian, D., Benedito-Silva, A. A., & Pedrazzoli, M. (2022).
 #>   {mctq}: an R package for the Munich ChronoType Questionnaire (v.
-#>   0.2.0). https://docs.ropensci.org/mctq/
+#>   0.3.0). https://docs.ropensci.org/mctq/
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -213,7 +214,7 @@ citation("mctq")
 #>     author = {Daniel Vartanian and Ana Amelia Benedito-Silva and Mario Pedrazzoli},
 #>     year = {2022},
 #>     url = {https://docs.ropensci.org/mctq/},
-#>     note = {(v. 0.2.0). Lifecycle: maturing},
+#>     note = {(v. 0.3.0). Lifecycle: maturing},
 #>   }
 ```
 
@@ -241,5 +242,5 @@ matters Zurich](https://hilda.ch/) for the [Daylight Academy
 
 Become an `mctq` supporter!
 
-Click [here](https://ko-fi.com/danielvartan) to make a donation. Please
-indicate the `mctq` package in your donation message.
+Click [here](https://github.com/sponsors/danielvartan) to make a
+donation. Please indicate the `mctq` package in your donation message.

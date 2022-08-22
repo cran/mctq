@@ -120,13 +120,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -403,17 +410,17 @@ as bedtime.</p>
 above and then type <code>View(data)</code> in the console to explore
 it.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 20</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   id    work  wd    bt_w  sprep_w slat_w se_w  si_w  alarm_w wake_before_w le_w </span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;         &lt;chr&gt;</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 1     TRUE  5     22:50 23:20   30     06:55 25    TRUE    FALSE         01:00</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2     TRUE  2     21:25 21:30   5      05:05 5     TRUE    FALSE         02:00</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 3     TRUE  5     22:30 23:10   50     08:00 15    TRUE    FALSE         02:15</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 4     TRUE  2     00:45 01:10   15     08:55 20    TRUE    FALSE         01:55</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 5     TRUE  7     22:40 22:40   5      08:20 5     TRUE    FALSE         02:00</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 9 more variables: bt_f &lt;chr&gt;, sprep_f &lt;chr&gt;, slat_f &lt;chr&gt;,</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   se_f &lt;chr&gt;, si_f &lt;chr&gt;, alarm_f &lt;chr&gt;, reasons_f &lt;chr&gt;,</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   reasons_why_f &lt;chr&gt;, le_f &lt;chr&gt;</span></span></code></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 20</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   id    work  wd    bt_w  sprep_w slat_w se_w  si_w  alarm_w wake_…¹ le_w  bt_f </span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 1     TRUE  5     22:50 23:20   30     06:55 25    TRUE    FALSE   01:00 23:35</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2     TRUE  2     21:25 21:30   5      05:05 5     TRUE    FALSE   02:00 21:55</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 3     TRUE  5     22:30 23:10   50     08:00 15    TRUE    FALSE   02:15 22:40</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 4     TRUE  2     00:45 01:10   15     08:55 20    TRUE    FALSE   01:55 23:15</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 5     TRUE  7     22:40 22:40   5      08:20 5     TRUE    FALSE   02:00 00:30</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 8 more variables: sprep_f &lt;chr&gt;, slat_f &lt;chr&gt;, se_f &lt;chr&gt;, si_f &lt;chr&gt;,</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   alarm_f &lt;chr&gt;, reasons_f &lt;chr&gt;, reasons_why_f &lt;chr&gt;, le_f &lt;chr&gt;, and</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   abbreviated variable name ¹​wake_before_w</span></span></code></pre></div>
 <p>As you can see, our data came in different formats. For example, the
 column <code>bt_w</code> (local time of going to bed on workdays) is in
 <code>hours:minutes</code> format, while <code>slat_w</code> (sleep
@@ -437,7 +444,7 @@ easy tools and great documentation to help you with this task.</p>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <p>Our data is now all set to start. Let’s take a look at it.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 20</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 20</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      id work     wd bt_w   sprep_w slat_w              se_w  si_w               </span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;lgl&gt; &lt;int&gt; &lt;time&gt; &lt;time&gt;  &lt;Duration&gt;          &lt;tim&gt; &lt;Duration&gt;         </span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 TRUE      5 22:50  23:20   1800s (~30 minutes) 06:55 1500s (~25 minutes)</span></span>
@@ -445,7 +452,7 @@ easy tools and great documentation to help you with this task.</p>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3 TRUE      5 22:30  23:10   3000s (~50 minutes) 08:00 900s (~15 minutes) </span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     4 TRUE      2 00:45  01:10   900s (~15 minutes)  08:55 1200s (~20 minutes)</span></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     5 TRUE      7 22:40  22:40   300s (~5 minutes)   08:20 300s (~5 minutes)  </span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 12 more variables: alarm_w &lt;lgl&gt;, wake_before_w &lt;lgl&gt;,</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 12 more variables: alarm_w &lt;lgl&gt;, wake_before_w &lt;lgl&gt;,</span></span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   le_w &lt;Duration&gt;, bt_f &lt;time&gt;, sprep_f &lt;time&gt;, slat_f &lt;Duration&gt;,</span></span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   se_f &lt;time&gt;, si_f &lt;Duration&gt;, alarm_f &lt;lgl&gt;, reasons_f &lt;lgl&gt;,</span></span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   reasons_why_f &lt;chr&gt;, le_f &lt;Duration&gt;</span></span></code></pre></div>
@@ -472,7 +479,7 @@ week.</p>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(wd, fd)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 2</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 2</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      wd    fd</span></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     5     2</span></span>
@@ -498,7 +505,7 @@ for a detail explanation.</p>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(sprep_w, slat_w, so_w, sprep_f, slat_f, so_f)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 6</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 6</span></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   sprep_w slat_w              so_w   sprep_f slat_f              so_f  </span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;time&gt;  &lt;Duration&gt;          &lt;time&gt; &lt;time&gt;  &lt;Duration&gt;          &lt;time&gt;</span></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 23:20   1800s (~30 minutes) 23:50  00:15   300s (~5 minutes)   00:20 </span></span>
@@ -524,7 +531,7 @@ authors.</p>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(se_w, si_w, gu_w, se_f, si_f, gu_f)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 6</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 6</span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   se_w   si_w                gu_w   se_f   si_f                gu_f  </span></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;time&gt; &lt;Duration&gt;          &lt;time&gt; &lt;time&gt; &lt;Duration&gt;          &lt;time&gt;</span></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 06:55  1500s (~25 minutes) 07:20  10:10  1500s (~25 minutes) 10:35 </span></span>
@@ -553,7 +560,7 @@ resemblance with the original authors’ naming pattern.</p>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(so_w, se_w, sd_w, so_f, se_f, sd_f)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 6</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 6</span></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   so_w   se_w   sd_w                 so_f   se_f   sd_f                </span></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;time&gt; &lt;time&gt; &lt;Duration&gt;           &lt;time&gt; &lt;time&gt; &lt;Duration&gt;          </span></span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 23:50  06:55  25500s (~7.08 hours) 00:20  10:10  35400s (~9.83 hours)</span></span>
@@ -575,7 +582,7 @@ It takes two arguments: <code>bt</code> (local time of going to bed) and
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(bt_w, gu_w, tbt_w, bt_f, gu_f, tbt_f)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 6</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 6</span></span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   bt_w   gu_w   tbt_w                bt_f   gu_f   tbt_f                </span></span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;time&gt; &lt;time&gt; &lt;Duration&gt;           &lt;time&gt; &lt;time&gt; &lt;Duration&gt;           </span></span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 22:50  07:20  30600s (~8.5 hours)  23:35  10:35  39600s (~11 hours)   </span></span>
@@ -597,7 +604,7 @@ It takes two arguments: <code>so</code> (local time of sleep onset) and
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(so_w, sd_w, msw, so_f, sd_f, msf)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 6</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 6</span></span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   so_w   sd_w                 msw      so_f   sd_f                 msf     </span></span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;time&gt; &lt;Duration&gt;           &lt;time&gt;   &lt;time&gt; &lt;Duration&gt;           &lt;time&gt;  </span></span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 23:50  25500s (~7.08 hours) 03:22:30 00:20  35400s (~9.83 hours) 05:15:00</span></span>
@@ -626,7 +633,7 @@ weights, in a circular time frame of 24 hours.</p>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">sd_week_rounded =</span> mctq<span class="sc">::</span><span class="fu">round_time</span>(sd_week))</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(wd, sd_w, fd, sd_f, sd_week_rounded)</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 5</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 5</span></span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      wd sd_w                    fd sd_f                 sd_week_rounded     </span></span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;Duration&gt;           &lt;int&gt; &lt;Duration&gt;           &lt;Duration&gt;          </span></span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     5 25500s (~7.08 hours)     2 35400s (~9.83 hours) 28329s (~7.87 hours)</span></span>
@@ -653,7 +660,7 @@ week). See <code>?sloss_week</code> to learn more.</p>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sloss_week_rounded =</span> mctq<span class="sc">::</span><span class="fu">round_time</span>(sloss_week))</span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(wd, sd_w, fd, sd_f, sloss_week_rounded)</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 5</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 5</span></span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      wd sd_w                    fd sd_f                 sloss_week_rounded    </span></span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;Duration&gt;           &lt;int&gt; &lt;Duration&gt;           &lt;Duration&gt;            </span></span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     5 25500s (~7.08 hours)     2 35400s (~9.83 hours) 14143s (~3.93 hours)  </span></span>
@@ -678,7 +685,7 @@ version of the standard MCTQ.</p>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">le_week_rounded =</span> mctq<span class="sc">::</span><span class="fu">round_time</span>(le_week))</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(wd, le_w, fd, le_f, le_week_rounded)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 5</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 5</span></span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      wd le_w                   fd le_f                 le_week_rounded     </span></span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;Duration&gt;          &lt;int&gt; &lt;Duration&gt;           &lt;Duration&gt;          </span></span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     5 3600s (~1 hours)        2 12000s (~3.33 hours) 6000s (~1.67 hours) </span></span>
@@ -714,7 +721,7 @@ workdays that usually is compensated on work-free days. See
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">msf_sc_rounded =</span> mctq<span class="sc">::</span><span class="fu">round_time</span>(msf_sc))</span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(msf, msf_sc_rounded)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 2</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 2</span></span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   msf      msf_sc_rounded</span></span>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;time&gt;   &lt;time&gt;        </span></span>
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 05:15:00 04:16:04      </span></span>
@@ -742,7 +749,7 @@ more.</p>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(msw, msf, sjl_rel)</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 3</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 3</span></span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   msw      msf      sjl_rel              </span></span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;time&gt;   &lt;time&gt;   &lt;Duration&gt;           </span></span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 03:22:30 05:15:00 6750s (~1.88 hours)  </span></span>
@@ -765,7 +772,7 @@ That’s what we’re going to do with our data.</p>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing the result</span></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(sjl_rel, sjl)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 2</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 2</span></span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   sjl_rel               sjl                  </span></span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;Duration&gt;            &lt;Duration&gt;           </span></span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 6750s (~1.88 hours)   6750s (~1.88 hours)  </span></span>
@@ -797,7 +804,7 @@ that we created just for show.</p>
 <span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>dplyr<span class="sc">::</span><span class="fu">ends_with</span>(<span class="st">&quot;_rounded&quot;</span>))</span></code></pre></div>
 <p>And our final dataset is …</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 37</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 37</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      id work     wd    fd bt_w   sprep_w slat_w              so_w   se_w  </span></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;lgl&gt; &lt;int&gt; &lt;int&gt; &lt;time&gt; &lt;time&gt;  &lt;Duration&gt;          &lt;time&gt; &lt;time&gt;</span></span>
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 TRUE      5     2 22:50  23:20   1800s (~30 minutes) 23:50  06:55 </span></span>
@@ -805,7 +812,7 @@ that we created just for show.</p>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3 TRUE      5     2 22:30  23:10   3000s (~50 minutes) 00:00  08:00 </span></span>
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     4 TRUE      2     5 00:45  01:10   900s (~15 minutes)  01:25  08:55 </span></span>
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     5 TRUE      7     0 22:40  22:40   300s (~5 minutes)   22:45  08:20 </span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 28 more variables: si_w &lt;Duration&gt;, gu_w &lt;time&gt;, alarm_w &lt;lgl&gt;,</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 28 more variables: si_w &lt;Duration&gt;, gu_w &lt;time&gt;, alarm_w &lt;lgl&gt;,</span></span>
 <span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   wake_before_w &lt;lgl&gt;, sd_w &lt;Duration&gt;, tbt_w &lt;Duration&gt;, le_w &lt;Duration&gt;,</span></span>
 <span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   msw &lt;time&gt;, bt_f &lt;time&gt;, sprep_f &lt;time&gt;, slat_f &lt;Duration&gt;, so_f &lt;time&gt;,</span></span>
 <span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   se_f &lt;time&gt;, si_f &lt;Duration&gt;, gu_f &lt;time&gt;, alarm_f &lt;lgl&gt;, reasons_f &lt;lgl&gt;,</span></span>
@@ -819,7 +826,7 @@ in the console to explore the final result.</p>
 objects are printed, <code>mctq</code> provides a utility function to
 help you. Just use <code>pretty_mctq()</code> to get a better view.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pretty_mctq</span>(data, <span class="at">round =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 x 37</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 37</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      id work     wd    fd bt_w   sprep_w slat_w so_w  se_w  si_w   gu_w  alarm_w</span></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;lgl&gt; &lt;int&gt; &lt;int&gt; &lt;time&gt; &lt;time&gt;  &lt;time&gt; &lt;tim&gt; &lt;tim&gt; &lt;time&gt; &lt;tim&gt; &lt;lgl&gt;  </span></span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 TRUE      5     2 22:50  23:20   30&#39;00&quot; 23:50 06:55 25&#39;00&quot; 07:20 TRUE   </span></span>
@@ -827,7 +834,7 @@ help you. Just use <code>pretty_mctq()</code> to get a better view.</p>
 <span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3 TRUE      5     2 22:30  23:10   50&#39;00&quot; 00:00 08:00 15&#39;00&quot; 08:15 TRUE   </span></span>
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     4 TRUE      2     5 00:45  01:10   15&#39;00&quot; 01:25 08:55 20&#39;00&quot; 09:15 TRUE   </span></span>
 <span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5     5 TRUE      7     0 22:40  22:40   05&#39;00&quot; 22:45 08:20 05&#39;00&quot; 08:25 TRUE   </span></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 25 more variables: wake_before_w &lt;lgl&gt;, sd_w &lt;time&gt;, tbt_w &lt;time&gt;,</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 25 more variables: wake_before_w &lt;lgl&gt;, sd_w &lt;time&gt;, tbt_w &lt;time&gt;,</span></span>
 <span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   le_w &lt;time&gt;, msw &lt;time&gt;, bt_f &lt;time&gt;, sprep_f &lt;time&gt;, slat_f &lt;time&gt;,</span></span>
 <span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   so_f &lt;time&gt;, se_f &lt;time&gt;, si_f &lt;time&gt;, gu_f &lt;time&gt;, alarm_f &lt;lgl&gt;,</span></span>
 <span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   reasons_f &lt;lgl&gt;, reasons_why_f &lt;chr&gt;, sd_f &lt;time&gt;, tbt_f &lt;time&gt;,</span></span>

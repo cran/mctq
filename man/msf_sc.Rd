@@ -2,12 +2,9 @@
 % Please edit documentation in R/msl.R
 \name{msf_sc}
 \alias{msf_sc}
-\alias{chronotype}
 \title{Compute MCTQ sleep-corrected local time of mid-sleep on work-free days}
 \usage{
 msf_sc(msf, sd_w, sd_f, sd_week, alarm_f)
-
-chronotype(msf, sd_w, sd_f, sd_week, alarm_f)
 }
 \arguments{
 \item{msf}{An \code{\link[hms:hms]{hms}} object corresponding to the \strong{local time of
@@ -45,11 +42,9 @@ sleep-corrected local time of mid-sleep on work-free days.
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#maturing}{\figure{lifecycle-maturing.svg}{options: alt='[Maturing]'}}}{\strong{[Maturing]}}
 
-\code{msf_sc()} computes the \strong{chronotype or sleep-corrected local time of
-mid-sleep on work-free days} for standard, micro, and shift versions of the
-Munich ChronoType Questionnaire (MCTQ).
-
-\code{chronotype()} is just a wrapper for \code{msf_sc()}.
+\code{msf_sc()} computes the \strong{sleep-corrected local time of mid-sleep on
+work-free days} for standard, micro, and shift versions of the Munich
+ChronoType Questionnaire (MCTQ).
 
 When using the shift version of the MCTQ, replace the value of \code{sd_week} to
 \code{sd_overall}, as instructed in the Arguments section.
@@ -121,31 +116,61 @@ package \href{https://docs.ropensci.org/mctq/reference/}{website}.
 
 \subsection{For standard and micro versions of the MCTQ}{
 
-\strong{\deqn{\textrm{If } SD_F \leq SD_W \; , \; MSF}{If SD_F <= SD_W, MSF}}
-\strong{\deqn{\textrm{If } SD_F > SD_W \; , \; MSF - \frac{SD_F - SD_{week}}{2}}{
-If SD_F > SD_W, MSF - (SD_F - SD_week) / 2}}
+\deqn{\textrm{If } Alarm_{F} = True \; , \; MSF_{sc} =
+\textrm{Not Available (NA)}}
+\deqn{\textrm{Else if } SD_F \leq SD_W \; , \; MSF_{sc} = MSF}
+\deqn{\textrm{Else } \; , \; MSF_{sc} = MSF - \frac{SD_F - SD_{week}}{2}}
+
+Where:
+\itemize{
+\item \eqn{MSF_{sc}} = Sleep-corrected local time of mid-sleep on work-free days.
+\item \eqn{Alarm_{F}} = A \code{\link[base:logical]{logical}} value indicating if the
+respondent uses an alarm clock to wake up on work-free days.
+\item \eqn{MSF} = Local time of mid-sleep on work-free days.
+\item \eqn{SD_W} = Sleep duration on workdays.
+\item \eqn{SD_F} = Sleep duration on work-free days.
+\item \eqn{SD_{week}} = Average weekly sleep duration.
+}
+
+\strong{*} \eqn{W} = Workdays; \eqn{F} = Work-free days.
+
+Note that, since:
+
+\deqn{MSF = SO_{F} + \frac{SD_{F}}{2}}
 
 Where:
 \itemize{
 \item \eqn{MSF} = Local time of mid-sleep on work-free days.
-\item \eqn{SD_W} = Sleep duration on workdays.
-\item \eqn{SD_F} = Sleep duration on work-free days.
-\item \eqn{SD_{week}}{SD_week} = Average weekly sleep duration.
+\item \eqn{SO_{F}} = Local time of sleep onset on work-free days.
+\item \eqn{SD_{F}} = Sleep duration on work-free days.
 }
 
-\strong{*} \eqn{W} = Workdays; \eqn{F} = Work-free days.
+The last condition of the \eqn{MSF_{sc}}{MSF_sc} computation can be
+simplified to:
+
+\deqn{MSF_{sc} = SO_{F} + \frac{SD_{F}}{2} -
+\frac{SD_{F} - SD_{week}}{2}}
+\deqn{MSF_{sc} = SO_{F} + \frac{SD_{F}}{2} - \frac{SD_{F}}{2} +
+\frac{SD_{week}}{2}}
+\deqn{MSF_{sc} = SO_{F} + \frac{SD_{week}}{2}}
 }
 
 \subsection{For the shift version of the MCTQ}{
 
-\strong{\deqn{\textrm{If } SD_{F}^{M/E/N} \leq SD_{W}^{M/E/N} \; , \; MSF^{M/E/N}}{
-If SD_F_M/E/N <= SD_W_M/E/N, MSF}}
-\strong{\deqn{\textrm{If } SD_{F}^{M/E/N} > SD_{W}^{M/E/N} \; , \; MSF^{M/E/N} -
-\frac{SD_{F}^{M/E/N} - \emptyset SD^{M/E/N}}{2}}{If SD_F_M/E/N > SD_W_M/E/N,
-MSF - (SD_F_M/E/N - OSD_M/E/N) / 2}}
+\deqn{\textrm{If } Alarm_{F}^{M/E/N} = True \; , \; MSF_{sc}^{M/E/N} =
+\textrm{Not Available (NA)}}
+\deqn{\textrm{Else if } SD_{F}^{M/E/N} \leq SD_{W}^{M/E/N} \; , \;
+MSF_{sc}^{M/E/N} = MSF^{M/E/N}}
+\deqn{\textrm{Else } \; , \; MSF_{sc}^{M/E/N} = MSF^{M/E/N} -
+\frac{SD_{F}^{M/E/N} - \emptyset SD^{M/E/N}}{2}}
 
 Where:
 \itemize{
+\item \eqn{MSF_{sc}^{M/E/N}} = Sleep-corrected local time of mid-sleep between
+two free days after a particular shift.
+\item \eqn{Alarm_{F}^{M/E/N}} = A \code{\link[base:logical]{logical}} value indicating
+if the respondent uses an alarm clock to wake up between two free days after
+a particular shift.
 \item \eqn{MSF^{M/E/N}}{MSF_M/E/N} = Local time of mid-sleep between two free
 days after a particular shift.
 \item \eqn{SD_{W}^{M/E/N}}{SD_W_M/E/N} = Sleep duration between two days in a
@@ -158,6 +183,29 @@ particular shift.
 
 \strong{*} \eqn{W} = Workdays; \eqn{F} = Work-free days, \eqn{M} =
 Morning shift; \eqn{E} = Evening shift; \eqn{N} = Night shift.
+
+Note that, since:
+
+\deqn{MSF^{M/E/N} = SO_{F}^{M/E/N} + \frac{SD_{F}^{M/E/N}}{2}}
+
+Where:
+\itemize{
+\item \eqn{MSF^{M/E/N}}{MSF_M/E/N} = Local time of mid-sleep between two free
+days after a particular shift.
+\item \eqn{SO_{F}^{M/E/N}} = Local time of sleep onset between two free days
+after a particular shift.
+\item \eqn{SD_{F}^{M/E/N}} = Sleep duration between two free days after a
+particular shift.
+}
+
+The last condition of the \eqn{MSF_{sc}^{M/E/N}}{MSF_sc_M/E/N} computation
+can be simplified to:
+
+\deqn{MSF_{sc}^{M/E/N} = SO_{F}^{M/E/N} + \frac{SD_{F}^{M/E/N}}{2} -
+\frac{SD_{F}^{M/E/N} - \emptyset SD^{M/E/N}}{2}}
+\deqn{MSF_{sc}^{M/E/N} = SO_{F}^{M/E/N} + \frac{SD_{F}^{M/E/N}}{2} -
+\frac{SD_{F}^{M/E/N}}{2} + \frac{\emptyset SD^{M/E/N}}{2}}
+\deqn{MSF_{sc}^{M/E/N} = SO_{F}^{M/E/N} + \frac{\emptyset SD^{M/E/N}}{2}}
 }
 }
 
@@ -198,16 +246,6 @@ alarm_f <- c(FALSE, FALSE)
 msf_sc(msf, sd_w, sd_f, sd_week, alarm_f)
 #> 03:45:00 # Expected
 #> 04:21:00 # Expected
-
-## chronotype(): A wrapper for msf_sc()
-
-msf <- hms::parse_hms("07:00:00")
-sd_w <- lubridate::dhours(6)
-sd_f <- lubridate::dhours(12)
-sd_week <- lubridate::dhours(9.45)
-alarm_f <- FALSE
-chronotype(msf, sd_w, sd_f, sd_week, alarm_f)
-#> 05:43:30 # Expected
 
 ## Rounding the output at the seconds level
 
