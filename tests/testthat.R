@@ -15,6 +15,12 @@ test_check("mctq")
 # devtools::check(remote = TRUE, manual = TRUE)
 # devtools::check_mac_release()
 # devtools::check_rhub()
+# devtools::check_rhub(platforms = c(
+#     "windows-x86_64-devel", "windows-x86_64-release",
+#     "macos-highsierra-release-cran", "ubuntu-gcc-devel",
+#     "ubuntu-gcc-release", "debian-clang-devel", "debian-gcc-release",
+#     "fedora-clang-devel", "solaris-x86-patched"
+# ))
 # devtools::check_win_devel()
 # devtools::check_win_release()
 # devtools::check_win_oldrelease()
@@ -40,6 +46,7 @@ test_check("mctq")
 # usethis::use_github_action("test-coverage-pak")
 # usethis::use_logo(file.choose())
 # usethis::use_release_issue("#.#.#")
+# usethis::use_dev_version()
 # usethis::use_revdep()
 # usethis::use_tidy_description()
 # usethis::use_version()
