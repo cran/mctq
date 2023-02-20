@@ -5,7 +5,7 @@ knitr::opts_chunk$set(
 )
 
 ## ---- eval = FALSE------------------------------------------------------------
-#  install.packages("mctq", dependencies = TRUE)
+#  install.packages("mctq")
 
 ## ---- warning = FALSE, message = FALSE----------------------------------------
 library(mctq)

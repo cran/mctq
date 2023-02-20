@@ -26,6 +26,8 @@ MIT](https://img.shields.io/badge/license-MIT-green)](https://choosealicense.com
 [![fair-software.eu](https://img.shields.io/badge/fair--software.eu-%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F-green)](https://fair-software.eu)
 [![CII Best
 Practices](https://bestpractices.coreinfrastructure.org/projects/6244/badge)](https://bestpractices.coreinfrastructure.org/projects/6244)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/mctq)](https://CRAN.R-project.org/package=mctq)
 <!-- badges: end -->
 
 ## Overview
@@ -36,7 +38,7 @@ tool to assess chronotypes using peoples’ sleep behavior presented by
 Till Roenneberg, Anna Wirz-Justice, and Martha Merrow in
 [2003](https://doi.org/10.1177/0748730402239679). The aim of `mctq` is
 to facilitate the work of sleep and chronobiology scientists with MCTQ
-data and to help with research reproducibility.
+data and to improve reproducibility in research.
 
 `mctq` adheres to the [tidyverse
 principles](https://tidyverse.tidyverse.org/articles/manifesto.html) and
@@ -92,14 +94,14 @@ You can install the released version of `mctq` from
 [CRAN](https://CRAN.R-project.org/package=mctq) with:
 
 ``` r
-install.packages("mctq", dependencies = TRUE)
+install.packages("mctq")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("ropensci/mctq", dependencies = TRUE)
+remotes::install_github("ropensci/mctq")
 ```
 
 ## Usage
@@ -126,15 +128,14 @@ Note that the `mctq` functions uses a similar naming pattern to those
 used in the MCTQ publications. This makes it easy to find and apply any
 computation necessary.
 
--   `fd()`: compute MCTQ work-free days.
--   `so()`: compute MCTQ local time of sleep onset.
--   `gu()`: compute MCTQ local time of getting out of bed.
--   `sdu()`: compute MCTQ sleep duration.
--   `tbt()`: compute MCTQ total time in bed.
--   `msl()`: compute MCTQ local time of mid-sleep.
--   `napd()`: compute MCTQ nap duration (only for MCTQ Shift).
--   `sd24()`: compute MCTQ 24 hours sleep duration (only for MCTQ
-    Shift).
+- `fd()`: compute MCTQ work-free days.
+- `so()`: compute MCTQ local time of sleep onset.
+- `gu()`: compute MCTQ local time of getting out of bed.
+- `sdu()`: compute MCTQ sleep duration.
+- `tbt()`: compute MCTQ total time in bed.
+- `msl()`: compute MCTQ local time of mid-sleep.
+- `napd()`: compute MCTQ nap duration (only for MCTQ Shift).
+- `sd24()`: compute MCTQ 24 hours sleep duration (only for MCTQ Shift).
 
 Example:
 
@@ -153,18 +154,18 @@ so(sprep_w, slat_w)
 
 For computations combining workdays and work-free days, use:
 
--   `sd_week()`: compute MCTQ average weekly sleep duration.
--   `sd_overall()`: compute MCTQ overall sleep duration (only for MCTQ
-    Shift).
--   `sloss_week()`: compute MCTQ weekly sleep loss.
--   `le_week()`: compute MCTQ average weekly light exposure.
--   `msf_sc()`: compute MCTQ chronotype or sleep-corrected local time of
-    mid-sleep on work-free days.
--   `sjl()` and `sjl_rel()`: compute MCTQ social jet lag.
--   `sjl_sc()` and `sjl_sc_rel()`: compute Jankowski’s MCTQ
-    sleep-corrected social jetlag.
--   `sjl_weighted()`: compute MCTQ absolute social jetlag across all
-    shifts (only for MCTQ Shift).
+- `sd_week()`: compute MCTQ average weekly sleep duration.
+- `sd_overall()`: compute MCTQ overall sleep duration (only for MCTQ
+  Shift).
+- `sloss_week()`: compute MCTQ weekly sleep loss.
+- `le_week()`: compute MCTQ average weekly light exposure.
+- `msf_sc()`: compute MCTQ chronotype or sleep-corrected local time of
+  mid-sleep on work-free days.
+- `sjl()` and `sjl_rel()`: compute MCTQ social jet lag.
+- `sjl_sc()` and `sjl_sc_rel()`: compute Jankowski’s MCTQ
+  sleep-corrected social jetlag.
+- `sjl_weighted()`: compute MCTQ absolute social jetlag across all
+  shifts (only for MCTQ Shift).
 
 Example:
 
@@ -183,12 +184,12 @@ See a quick tour of all MCTQ main functions
 
 ### Utilities
 
-`mctq` is also equipped with many utility functions. The package also
-provides fictional datasets of the standard, micro, and shift MCTQ
-versions for testing and learning purposes.
+`mctq` is also equipped with some utility tools to help with your MCTQ
+data. The package also provides fictional datasets of the standard,
+micro, and shift MCTQ versions for testing and learning purposes.
 
-All functions are well documented, showing all the guidelines behind the
-computations. Click
+All functions are properly documented, showing all the guidelines behind
+the computations. Click
 [here](https://docs.ropensci.org/mctq/reference/index.html) to see a
 list of them.
 
@@ -203,36 +204,32 @@ citation("mctq")
 #> 
 #> To cite {mctq} in publications use:
 #> 
-#>   Vartanian, D., Benedito-Silva, A. A., & Pedrazzoli, M. (2022).
-#>   {mctq}: an R package for the Munich ChronoType Questionnaire (v.
-#>   0.3.1). https://docs.ropensci.org/mctq/
+#>   Vartanian, D. (2023). {mctq}: tools to process the Munich ChronoType
+#>   Questionnaire (MCTQ). R package version 0.3.2.
+#>   https://docs.ropensci.org/mctq/
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Unpublished{,
-#>     title = {{mctq}: an R package for the Munich ChronoType Questionnaire},
-#>     author = {Daniel Vartanian and Ana Amelia Benedito-Silva and Mario Pedrazzoli},
-#>     year = {2022},
+#>     title = {{mctq}: tools to process the Munich ChronoType Questionnaire (MCTQ)},
+#>     author = {Daniel Vartanian},
+#>     year = {2023},
 #>     url = {https://docs.ropensci.org/mctq/},
-#>     note = {(v. 0.3.1). Lifecycle: maturing},
+#>     note = {R package version 0.3.2},
 #>   }
 ```
 
 ## Contributing
 
-We welcome contributions, including bug reports. Take a moment to review
-our [Guidelines for
-Contributing](https://docs.ropensci.org/mctq/CONTRIBUTING.html).
+We welcome contributions, including bug reports.
 
-Please note that this package is released with a [Contributor Code of
-Conduct](https://ropensci.org/code-of-conduct/). By contributing to this
-project, you agree to abide by its terms.
+Take a moment to review our [Guidelines for
+Contributing](https://docs.ropensci.org/mctq/CONTRIBUTING.html).
 
 ## Acknowledgments
 
-`mctq` is supported by the [Interdisciplinary Sleep Research Group
-(GIPSO)](https://gipso.netlify.app/) of [University of Sao Paulo
-(USP)](http://usp.br/).
+The initial development of `mctq` was supported by a scholarship
+provided by the [University of Sao Paulo (USP)](http://usp.br/) (❤️).
 
 `mctq` hex logo was based on an illustration created by [hilda design
 matters Zurich](https://hilda.ch/) for the [Daylight Academy

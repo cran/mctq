@@ -19,7 +19,9 @@ qplot_walk(
 \code{\link[base:data.frame]{data.frame}} object.}
 
 \item{...}{(optional) additional arguments to be passed to
-\code{\link[ggplot2:qplot]{qplot()}}.}
+\code{\link[ggplot2:geom_bar]{geom_bar()}} (for non \code{\link[base:double]{double}}
+variables) or \code{\link[ggplot2:geom_histogram]{geom_histogram()}} (for
+\code{\link[base:double]{double}} variables).}
 
 \item{cols}{(optional) (only for data frames) a
 \code{\link[base:character]{character}} object indicating column names in \code{data}
@@ -49,10 +51,15 @@ the Details section to learn more) (default: \code{TRUE}).}
 An invisible \code{NULL}. This function don't aim to return values.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#maturing}{\figure{lifecycle-maturing.svg}{options: alt='[Maturing]'}}}{\strong{[Maturing]}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+This function will be removed on the next \code{mctq} version. You can still find
+it in the \href{https://github.com/giperbio/gutils}{\code{gutils}} package.
 
 \code{qplot_walk()} helps you to visually assess the distribution of your data. It
-uses \code{\link[ggplot2:qplot]{qplot()}} to walk through each selected variable
+uses \code{\link[ggplot2:geom_bar]{geom_bar()}} (for non \code{\link[base:double]{double}}
+variables) or \code{\link[ggplot2:geom_histogram]{geom_histogram()}} (for
+\code{\link[base:double]{double}} variables) to walk through each selected variable
 from a data frame.
 }
 \details{
@@ -78,11 +85,14 @@ runs. If you want to recover a single distribution plot, assign the variable
 vector to the \code{data} argument.
 }
 
-\subsection{Additional arguments to \code{\link[ggplot2:qplot]{qplot()}}}{
+\subsection{Additional arguments to \code{geom_bar()} or \code{geom_histogram()}}{
 
-\code{qplot_walk()} uses ggplot2 \code{\link[ggplot2:qplot]{qplot()}} to generate plots.
-If you are familiar with \code{\link[ggplot2:qplot]{qplot()}}, you can pass
-additional arguments to the function using the ellipsis argument (\code{...}).
+\code{qplot_walk()} uses \code{\link[ggplot2:ggplot2-package]{ggplot2}}
+\code{\link[ggplot2:geom_bar]{geom_bar()}} (for non \code{\link[base:double]{double}}
+variables) or \code{\link[ggplot2:geom_histogram]{geom_histogram()}} (for
+\code{\link[base:double]{double}} variables) to generate plots. If you are familiar
+with these functions, you can pass additional arguments to the them using
+the ellipsis argument (\code{...}).
 
 Note that \code{x}, \code{y}, and \code{data} arguments are reserved for \code{qplot_walk()}.
 }
@@ -141,7 +151,7 @@ qplot_walk(mctq::std_mctq$bt_w)
 
 ## Ploting all columns from 'data'
 
-qplot_walk(mctq::std_mctq, ignore = NULL, remove_id = FALSE)
+qplot_walk(mctq::std_mctq)
 
 ## Ploting selected columns from 'data'
 
@@ -158,15 +168,3 @@ if (requireNamespace("datasets", quietly = TRUE)) {
 }
 }
 }
-\seealso{
-Other utility functions: 
-\code{\link{assign_date}()},
-\code{\link{cycle_time}()},
-\code{\link{pretty_mctq}()},
-\code{\link{random_mctq}()},
-\code{\link{raw_data}()},
-\code{\link{round_time}()},
-\code{\link{shorter_interval}()},
-\code{\link{sum_time}()}
-}
-\concept{utility functions}

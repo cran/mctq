@@ -1,4 +1,6 @@
 test_that("qplot_walk() | general test", {
+    rlang::local_options(lifecycle_verbosity = "quiet")
+    
     # "if (is.atomic(data))"
     mock <- function(.parent = parent.frame(), .env = topenv(.parent)) {
         mockr::with_mock(
@@ -7,7 +9,16 @@ test_that("qplot_walk() | general test", {
             )
     }
 
-    expect_s3_class(shush(mock()), "ggplot")
+    expect_equal(shush(mock()), NULL)
+    
+    mock <- function(.parent = parent.frame(), .env = topenv(.parent)) {
+        mockr::with_mock(
+            is_interactive = function(...) TRUE,
+            {qplot_walk(data = c(rep("A", 5), rep("B", 4), rep("C", 3)))}
+        )
+    }
+    
+    expect_equal(shush(mock()), NULL)
 
     # "if ("xlab" %in% names(list(...)))"
     mock <- function(.parent = parent.frame(), .env = topenv(.parent)) {
@@ -20,7 +31,7 @@ test_that("qplot_walk() | general test", {
         )
     }
 
-    expect_s3_class(shush(mock()), "ggplot")
+    expect_equal(shush(mock()), NULL)
 
     # "if (is.data.frame(data))"
     mock <- function(.parent = parent.frame(), .env = topenv(.parent)) {
@@ -50,6 +61,8 @@ test_that("qplot_walk() | general test", {
 })
 
 test_that("qplot_walk() | error test", {
+    rlang::local_options(lifecycle_verbosity = "quiet")
+    
     # if (!is_interactive()) {
     mock <- function(.parent = parent.frame(), .env = topenv(.parent)) {
         mockr::with_mock(
@@ -133,6 +146,8 @@ test_that("qplot_walk() | error test", {
 })
 
 test_that("qplot_walk() | warning test", {
+    rlang::local_options(lifecycle_verbosity = "quiet")
+    
     # if (is.atomic(data)) {
     mock <- function(.parent = parent.frame(), .env = topenv(.parent)) {
         mockr::with_mock(
@@ -141,7 +156,10 @@ test_that("qplot_walk() | warning test", {
         )
     }
 
-    expect_message(mock(), "'data' is 'atomic'. All other arguments, ")
+    expect_message(
+        suppressWarnings(mock()),
+        "'data' is 'atomic'. All other arguments, "
+        )
 
     # if (any(ignore %in% get_class(data[cols]))) {
     mock <- function(.parent = parent.frame(), .env = topenv(.parent)) {
@@ -154,5 +172,8 @@ test_that("qplot_walk() | warning test", {
         )
     }
 
-    expect_message(mock(), "'Species' will be ignored due to the settings ")
+    expect_message(
+        suppressWarnings(mock()), 
+        "'Species' will be ignored due to the settings "
+        )
 })
